@@ -1,4 +1,7 @@
+
 # Fullstack Car Dealership Workshop
+
+<img width="1916" height="945" alt="Screenshot 2026-06-12 at 6 57 15 PM" src="https://github.com/user-attachments/assets/50a2663e-dc6d-4e23-abe5-4dea1c3da853" />
 
 ### Languages and Tools
 
