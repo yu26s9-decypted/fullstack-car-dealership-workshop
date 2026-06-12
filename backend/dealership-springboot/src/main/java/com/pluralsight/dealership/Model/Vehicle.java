@@ -22,8 +22,16 @@ public class Vehicle {
     private int odometer;
     @Column(precision = 10, scale = 2)
     private BigDecimal price;
+    @ManyToOne
+    @JoinColumn(name = "dealership_id")
+    private Dealership dealership;
+
 
     public Vehicle() {}
+
+    public Long getId() {
+        return id;
+    }
 
     public String getVin() {
         return vin;
@@ -87,5 +95,13 @@ public class Vehicle {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public Dealership getDealership() {
+        return dealership;
+    }
+
+    public void setDealership(Dealership dealership){
+        this.dealership = dealership;
     }
 }
