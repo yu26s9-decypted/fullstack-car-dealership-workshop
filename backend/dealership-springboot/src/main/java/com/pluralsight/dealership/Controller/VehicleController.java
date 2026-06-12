@@ -29,6 +29,7 @@ public class VehicleController {
             @RequestParam(required = false) Integer maxYear,
             @RequestParam(required = false) BigDecimal minPrice,
             @RequestParam(required = false) BigDecimal maxPrice
+
     ) {
        if(make != null){
            return vehicleService.getVehicleByMake(make);
@@ -44,6 +45,12 @@ public class VehicleController {
        }
        if(minPrice != null && maxPrice != null) {
            return vehicleService.getVehiclesByPriceRange(minPrice, maxPrice);
+       }
+       if(maxPrice != null){
+           return vehicleService.getVehiclesByMaxPrice(maxPrice);
+       }
+       if(minPrice != null){
+           return vehicleService.getVehiclesByMinPrice(minPrice);
        }
 
         return vehicleService.getAllVehicles();

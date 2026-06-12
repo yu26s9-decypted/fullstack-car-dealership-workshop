@@ -44,4 +44,14 @@ public class VehicleService {
     public List<Vehicle> getVehiclesByPriceRange(BigDecimal minPrice, BigDecimal maxPrice){
         return vehicleRepository.findByPriceBetween(minPrice, maxPrice);
     }
+
+    public List<Vehicle> getVehiclesByMinPrice(BigDecimal minPrice) {
+        return vehicleRepository.findByPriceGreaterThanEqual(minPrice);
+    }
+
+    public List<Vehicle> getVehiclesByMaxPrice(BigDecimal maxPrice) {
+        return vehicleRepository.findByPriceLessThanEqual(maxPrice);
+    }
+
+
 }
