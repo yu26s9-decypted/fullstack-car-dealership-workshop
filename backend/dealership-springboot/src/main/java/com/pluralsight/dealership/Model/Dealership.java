@@ -1,5 +1,6 @@
 package com.pluralsight.dealership.Model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ public class Dealership {
 
 
     // cascade = ALL: saves/updates/deletes on this dealership cascade to its vehicles
+    @JsonManagedReference
     @OneToMany(mappedBy = "dealership", cascade = CascadeType.ALL)
     private List<Vehicle> inventory = new ArrayList<>();
 

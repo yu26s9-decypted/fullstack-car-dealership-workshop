@@ -1,6 +1,9 @@
 package com.pluralsight.dealership.Model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -23,6 +26,7 @@ public class Vehicle {
     @Column(precision = 10, scale = 2)
     private BigDecimal price;
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "dealership_id")
     private Dealership dealership;
 
