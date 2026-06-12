@@ -1,13 +1,14 @@
 package com.pluralsight.dealership.Controller;
 
 
-import com.pluralsight.dealership.Model.Dealership;
 import com.pluralsight.dealership.Model.Vehicle;
 import com.pluralsight.dealership.Service.VehicleService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -20,7 +21,31 @@ public class VehicleController {
     }
     
     @GetMapping
-    public List<Vehicle> getAllVehicle() {
+    public List<Vehicle> getAllVehicle(
+            @RequestParam(required = false) String make,
+            @RequestParam(required = false) String model,
+            @RequestParam(required = false) String color,
+            @RequestParam(required = false) Integer minYear,
+            @RequestParam(required = false) Integer maxYear,
+            @RequestParam(required = false) BigDecimal minPrice,
+            @RequestParam(required = false) BigDecimal maxPrice
+    ) {
+       if(make != null){
+           return vehicleService.getVehicleByMake(make);
+       }
+       if(model != null) {
+           return vehicleService.getVehicleByModel(model);
+       }
+       if(color != null) {
+           return vehicleService.getVehiclesByColor(color);
+       }
+       if(minYear != null && maxYear != null) {
+           return vehicleService.getVehiclesByYearBetween(minYear, maxYear);
+       }
+       if(minPrice != null && maxPrice != null) {
+           return vehicleService.getVehiclesByPriceRange(minPrice, maxPrice);
+       }
+
         return vehicleService.getAllVehicles();
     }
     
