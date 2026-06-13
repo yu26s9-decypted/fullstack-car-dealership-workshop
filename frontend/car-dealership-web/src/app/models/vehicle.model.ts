@@ -13,4 +13,5 @@ export interface Vehicle{
     dealership: Dealership;
     description: string;
     imageURL: string;
+    bannerUrl: string;
 }

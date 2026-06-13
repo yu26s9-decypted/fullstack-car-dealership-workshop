@@ -30,16 +30,10 @@
             [class.vehicle-showcase--entry]="vehicle.model === 'E1'"
             [routerLink]="['/vehicles', vehicle.make + '-' + vehicle.model + '-' + vehicle.year]"
           >
-            @if (vehicle.model === 'S1') {
+            @if (vehicle.bannerUrl) {
               <img
                 class="vehicle-showcase__media"
-                src="/asset/AndaraS1.png"
-                [alt]="vehicle.make + ' ' + vehicle.model"
-              />
-            } @else if (vehicle.model === 'E1') {
-              <img
-                class="vehicle-showcase__media"
-                src="/asset/AndaraE1.png"
+                [src]="vehicle.bannerUrl"
                 [alt]="vehicle.make + ' ' + vehicle.model"
               />
             } @else {
