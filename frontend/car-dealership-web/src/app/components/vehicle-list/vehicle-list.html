@@ -1,11 +1,16 @@
 <section class="inventory-section" aria-label="Andara vehicle lineup">
   <div class="inventory-container">
+    @if(isLoading()) {
+        <p>loading data...</p>
+    } @else {
     <div class="vehicle-grid">
       @for(vehicle of vehicles(); track vehicle.id; let index = $index){
         <article
           class="vehicle-showcase"
           [class.vehicle-showcase--wide]="index === 0"
           [class.vehicle-showcase--entry]="vehicle.model === 'E1'"
+          [routerLink]="['/vehicles', vehicle.make + '-' + vehicle.model + '-' + vehicle.year]"
+          style="cursor: pointer;"
         >
           @if (vehicle.model === 'S1') {
             <img
@@ -13,16 +18,14 @@
               src="/asset/AndaraS1.png"
               [alt]="vehicle.make + ' ' + vehicle.model"
             />
-          } @else if (vehicle.model === 'E1') {
-            <img
+          } @else {
+            <div class="vehicle-showcase__placeholder" aria-hidden="true">
+              <span>{{vehicle.model}}</span>
+              <img
               class="vehicle-showcase__media"
               src="/asset/AndaraE1.png"
               [alt]="vehicle.make + ' ' + vehicle.model"
             />
-          } @else {
-            <div class="vehicle-showcase__placeholder" aria-hidden="true">
-              <span>{{vehicle.model}}</span>
-              <small>Image coming soon</small>
             </div>
           }
 
@@ -54,12 +57,13 @@
                   Order Now
                 }
               </button>
+              
               <button class="btn-luxury btn-luxury-secondary" type="button">
                 Learn More
               </button>
             </div>
             <div>
-                <span class="text-low-contrast">MSRP: {{vehicle.price | currency: 'USD':'symbol':'1.0-0'}}</span>
+                <span class="text-">MSRP: {{vehicle.price | currency: 'USD':'symbol'}}</span>
             </div>
           </div>
         </article>
@@ -70,6 +74,6 @@
         </article>
       }
     </div>
-
+    }
   </div>
 </section>

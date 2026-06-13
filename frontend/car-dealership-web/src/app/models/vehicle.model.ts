@@ -3,6 +3,7 @@ import { Dealership } from "./dealership.model";
 export interface Vehicle{
     id: number;
     vin: string;
+    year: number;
     make: string;
     model: string;
     vehicleType: string;

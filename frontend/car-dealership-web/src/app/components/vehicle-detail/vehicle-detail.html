@@ -1,0 +1,14 @@
+@if (isLoading()) {
+  <div class="spinner">
+    <div class="spinner__ring"></div>
+    <span>Loading please wait...</span>
+  </div>
+}
+@if (vehicle()) {
+  <h1>{{ vehicle()!.make }} {{ vehicle()!.model }}</h1>
+  <p>{{ vehicle()!.vehicleType }}</p>
+  <p>{{ vehicle()!.color }}</p>
+} @else if(!isLoading()) {
+    <p>How did you end up here</p>
+
+}

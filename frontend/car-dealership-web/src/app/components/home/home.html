@@ -1,0 +1,60 @@
+<main
+  class="hero"
+  aria-label="Andara hero"
+  (click)="enableSound(heroVideo)"
+>
+  <video
+    #heroVideo
+    class="hero__video"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+    aria-hidden="true"
+  >
+    <source src="/asset/main.mp4" type="video/mp4" />
+  </video>
+
+  <section class="hero__content" aria-label="Andara introduction">
+    <h1>Andara S1</h1>
+    <p class="hero__copy">
+      Go beyond the expected, in silence that feels effortless, with every
+      mile shaped around power, comfort, and cleaner intent. Arrive changed.
+    </p>
+
+    <div class="hero__actions" aria-label="Andara actions">
+      <button class="btn-luxury btn-luxury-primary" type="button">
+        Reserve Now
+      </button>
+      <button class="btn-luxury btn-luxury-secondary" type="button">
+        Explore
+      </button>
+    </div>
+  </section>
+
+</main>
+
+<app-vehicle-list/>
+
+@if (!isDisclaimerDismissed) {
+  <aside
+    class="concept-note"
+    aria-label="Project disclaimer"
+    (click)="$event.stopPropagation()"
+  >
+    <p class="concept-note__eyebrow">Workshop Project</p>
+    <p class="concept-note__copy">
+      Andara is a fictional luxury EV "company" created solely for the purpose
+      of this demo. Any resemblance to real brands, vehicles, or campaigns is
+      purely coincidental. Also totally not marketing slop :)
+    </p>
+    <button
+      class="concept-note__button"
+      type="button"
+      (click)="dismissDisclaimer($event)"
+    >
+      Understood
+    </button>
+  </aside>
+}

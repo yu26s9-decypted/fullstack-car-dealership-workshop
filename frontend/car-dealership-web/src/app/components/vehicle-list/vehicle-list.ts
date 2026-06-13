@@ -2,9 +2,10 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { VehicleService } from '../../services/vehicle.service';
 import { Vehicle } from '../../models/vehicle.model';
 import { CurrencyPipe } from '@angular/common';
+import { RouterLink } from "@angular/router";
 @Component({
   selector: 'app-vehicle-list',
-  imports: [CurrencyPipe],
+  imports: [CurrencyPipe, RouterLink],
   templateUrl: './vehicle-list.html',
   styleUrl: './vehicle-list.css',
 })
@@ -12,12 +13,17 @@ export class VehicleList implements OnInit{
   private vehicleService = inject(VehicleService);
 
   vehicles = signal<Vehicle[]>([])
+  
+
+
+
 
   ngOnInit(): void {
     this.loadVehicle();
   }
 
   isLoading = signal(true);
+
 
   loadVehicle(){
     this.vehicleService.getAllVehicles().subscribe({
