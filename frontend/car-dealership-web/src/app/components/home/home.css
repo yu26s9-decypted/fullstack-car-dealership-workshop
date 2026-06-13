@@ -40,6 +40,7 @@
   display: grid;
   width: min(90vw, 40rem);
   justify-items: center;
+  justify-content: center;
   gap: clamp(0.9rem, 2vw, 1.35rem);
   transform: translateX(-50%);
 }
@@ -137,8 +138,34 @@ h1 {
 }
 
 @media (max-width: 520px) {
+  .hero__content {
+    top: clamp(10.5rem, 26vh, 13.5rem);
+    width: min(100% - 1rem, 34rem);
+    gap: 1rem;
+  }
+
+  h1 {
+    font-size: clamp(2.35rem, 10vw, 3.65rem);
+    letter-spacing: 0.065em;
+  }
+
+  .hero__copy {
+    max-width: 100%;
+    font-size: 1rem;
+    line-height: 1.45;
+  }
+
   .hero__actions {
     display: grid;
+    width: min(100%, 27rem);
+    justify-content: stretch;
+    gap: 0.8rem;
+  }
+
+  .hero__actions .btn-luxury {
+    width: 100%;
+    min-width: 0;
+    min-height: 3rem;
   }
 
   .concept-note {
