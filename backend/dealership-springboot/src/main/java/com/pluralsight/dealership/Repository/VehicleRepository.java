@@ -16,5 +16,7 @@ public interface VehicleRepository extends JpaRepository<Vehicle, Long> {
     List<Vehicle> findByPriceBetween(BigDecimal minPrice, BigDecimal maxPrice);
     List<Vehicle> findByPriceGreaterThanEqual(BigDecimal minPrice);
     List<Vehicle> findByPriceLessThanEqual(BigDecimal maxPrice);
+    List<Vehicle> findByOdometerGreaterThanEqual(int minRange);
+    List<Vehicle> findByOdometerLessThanEqual(int maxRange);
 
 }

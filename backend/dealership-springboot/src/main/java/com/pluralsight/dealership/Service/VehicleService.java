@@ -53,5 +53,13 @@ public class VehicleService {
         return vehicleRepository.findByPriceLessThanEqual(maxPrice);
     }
 
+    public List<Vehicle> getVehiclesByMaxRange(int maxRange) {
+        return vehicleRepository.findByOdometerLessThanEqual(maxRange);
+    }
+
+    public List<Vehicle> getVehiclesByMinRange(int minRange) {
+        return vehicleRepository.findByOdometerGreaterThanEqual(minRange);
+    }
+
 
 }

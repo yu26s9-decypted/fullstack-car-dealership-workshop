@@ -28,7 +28,9 @@ public class VehicleController {
             @RequestParam(required = false) Integer minYear,
             @RequestParam(required = false) Integer maxYear,
             @RequestParam(required = false) BigDecimal minPrice,
-            @RequestParam(required = false) BigDecimal maxPrice
+            @RequestParam(required = false) BigDecimal maxPrice,
+            @RequestParam(required = false) Integer odometerMinRange,
+            @RequestParam(required = false) Integer odometerMaxRange
 
     ) {
        if(make != null){
@@ -52,6 +54,13 @@ public class VehicleController {
        if(minPrice != null){
            return vehicleService.getVehiclesByMinPrice(minPrice);
        }
+       if(odometerMinRange != null) {
+           return vehicleService.getVehiclesByMinRange(odometerMinRange);
+       }
+       if(odometerMaxRange != null){
+           return vehicleService.getVehiclesByMaxRange(odometerMaxRange);
+       }
+
 
         return vehicleService.getAllVehicles();
     }
