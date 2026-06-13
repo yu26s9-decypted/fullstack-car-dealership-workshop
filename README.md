@@ -120,6 +120,9 @@ The app will be available at `http://localhost:4200`.
 | `GET` | `/api/v1/vehicle` | List all vehicles |
 | `GET` | `/api/v1/vehicle?model={model}` | Get vehicles by model |
 | `GET` | `/api/v1/dealership` | List all dealerships |
+| `GET` | `/api/v1/vehicle/{id}` | Get vehicle by id |
+| `PUT` | `/api/v1/vehicle/{id}` | Update vehicle by id |
+
 
 ## Personal Learning Goals
 
