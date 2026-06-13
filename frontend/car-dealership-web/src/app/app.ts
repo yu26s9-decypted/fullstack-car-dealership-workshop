@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
+import { VehicleList } from "./components/vehicle-list/vehicle-list";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
+  imports: [VehicleList]
 })
 export class App {
   protected isDisclaimerDismissed = false;

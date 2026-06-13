@@ -7,7 +7,7 @@
   position: relative;
   min-height: 100dvh;
   overflow: hidden;
-  background: #050505;
+  background: #f7f9ff;
   color: #fff;
   cursor: pointer;
   isolation: isolate;
@@ -56,6 +56,7 @@ h1 {
   text-align: center;
   text-shadow: 0 0.2rem 1.6rem rgb(0 0 0 / 42%);
 }
+
 
 .hero__copy {
   max-width: 36rem;

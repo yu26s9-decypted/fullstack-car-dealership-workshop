@@ -33,24 +33,28 @@
     </div>
   </section>
 
-  @if (!isDisclaimerDismissed) {
-    <aside
-      class="concept-note"
-      aria-label="Project disclaimer"
-      (click)="$event.stopPropagation()"
-    >
-      <p class="concept-note__eyebrow">Workshop Project</p>
-      <p class="concept-note__copy">
-        Andarais a fictional luxury EV "company" created solely for the purpose of this demo. Any resemblance
-        to real brands, vehicles, or campaigns is purely coincidental. Also totally not marketing slop :)
-      </p>
-      <button
-        class="concept-note__button"
-        type="button"
-        (click)="dismissDisclaimer($event)"
-      >
-        Understood
-      </button>
-    </aside>
-  }
 </main>
+
+<app-vehicle-list/>
+
+@if (!isDisclaimerDismissed) {
+  <aside
+    class="concept-note"
+    aria-label="Project disclaimer"
+    (click)="$event.stopPropagation()"
+  >
+    <p class="concept-note__eyebrow">Workshop Project</p>
+    <p class="concept-note__copy">
+      Andara is a fictional luxury EV "company" created solely for the purpose
+      of this demo. Any resemblance to real brands, vehicles, or campaigns is
+      purely coincidental. Also totally not marketing slop :)
+    </p>
+    <button
+      class="concept-note__button"
+      type="button"
+      (click)="dismissDisclaimer($event)"
+    >
+      Understood
+    </button>
+  </aside>
+}
