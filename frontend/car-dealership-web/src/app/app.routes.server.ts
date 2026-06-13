@@ -10,9 +10,11 @@ export const serverRoutes: ServerRoute[] = [
     renderMode: RenderMode.Client
   },
   {
-    path: 'admin', component: AdminPanel, canActivate: [authGuard]
+    path: 'admin',
+    renderMode: RenderMode.Client
   },
   {
-    path: 'admin/login', component: AdminLogin
+    path: 'admin/login',
+    renderMode: RenderMode.Client
   }
 ];
