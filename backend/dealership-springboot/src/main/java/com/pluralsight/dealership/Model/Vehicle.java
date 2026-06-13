@@ -33,8 +33,8 @@ public class Vehicle {
     private String imageURL;
     @Column(name = "banner_url")
     private String bannerUrl;
-    @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL)
-    private VehiclesSpec specs;
+    @OneToOne(mappedBy = "vehicle", cascade = CascadeType.ALL)
+    private VehiclesSpecs specs;
 
 
     public Vehicle() {}
@@ -143,11 +143,11 @@ public class Vehicle {
         this.bannerUrl = bannerUrl;
     }
 
-    public VehiclesSpec getSpecs() {
+    public VehiclesSpecs getSpecs() {
         return specs;
     }
 
-    public void setSpecs(VehiclesSpec specs) {
+    public void setSpecs(VehiclesSpecs specs) {
         this.specs = specs;
     }
 
