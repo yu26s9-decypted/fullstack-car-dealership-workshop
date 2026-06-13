@@ -1,4 +1,5 @@
 import { Dealership } from "./dealership.model";
+import { VehicleSpecs } from "./vehiclespecs.model";
 
 export interface Vehicle{
     id: number;
@@ -14,4 +15,6 @@ export interface Vehicle{
     description: string;
     imageURL: string;
     bannerUrl: string;
+    specs: VehicleSpecs;
+    vehicleTier: string;
 }

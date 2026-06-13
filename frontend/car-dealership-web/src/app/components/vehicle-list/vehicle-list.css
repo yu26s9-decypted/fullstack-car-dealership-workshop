@@ -5,19 +5,43 @@
 }
 
 .inventory-section {
-  @apply scroll-mt-20 bg-white px-6 py-16 sm:px-8 lg:px-12;
+  @apply scroll-mt-20 bg-white px-3 py-8 sm:px-5 lg:px-6 xl:px-8;
 }
 
 .inventory-container {
-  @apply mx-auto w-full max-w-7xl;
+  @apply mx-auto w-full max-w-[112rem];
+}
+
+.vehicle-carousel {
+  @apply relative;
 }
 
 .vehicle-grid {
-  @apply grid gap-5 lg:grid-cols-2;
+  @apply grid snap-x snap-mandatory grid-flow-col gap-4 overflow-x-auto pb-2 lg:snap-none lg:overflow-hidden;
+  grid-auto-columns: min(88vw, 34rem);
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.vehicle-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.vehicle-scroll-button {
+  @apply absolute top-1/2 z-30 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-md border border-white/70 bg-white/90 text-4xl font-light leading-none text-[#111827] shadow-[0_0.9rem_2.3rem_rgb(7_14_32_/_18%)] backdrop-blur transition hover:bg-white hover:shadow-[0_1.1rem_2.6rem_rgb(7_14_32_/_24%)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3f63e6] lg:flex;
+}
+
+.vehicle-scroll-button--previous {
+  @apply left-4;
+}
+
+.vehicle-scroll-button--next {
+  @apply right-4;
 }
 
 .vehicle-showcase {
-  @apply relative min-h-[35rem] cursor-pointer overflow-hidden rounded-lg bg-[#111827] text-white shadow-[0_1.25rem_3.5rem_rgb(7_14_32_/_12%)] transition duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_1.8rem_4rem_rgb(7_14_32_/_18%)];
+  @apply relative min-h-[32rem] snap-start cursor-pointer overflow-hidden rounded-lg bg-transparent text-white transition duration-300 ease-out hover:-translate-y-1 sm:min-h-[34rem] lg:min-h-[38rem] xl:min-h-[40rem];
 }
 
 .vehicle-showcase--wide {
@@ -25,7 +49,7 @@
 }
 
 .vehicle-showcase--entry {
-  @apply bg-[#eef2f7];
+  @apply bg-transparent;
 }
 
 .vehicle-showcase::after {
@@ -178,6 +202,18 @@
 
   .vehicle-showcase__actions {
     @apply grid;
+  }
+}
+
+@media (min-width: 1024px) {
+  .vehicle-grid {
+    grid-auto-columns: calc((100% - 1rem) / 2);
+  }
+}
+
+@media (min-width: 1536px) {
+  .vehicle-grid {
+    grid-auto-columns: calc((100% - 2rem) / 2.35);
   }
 }
 

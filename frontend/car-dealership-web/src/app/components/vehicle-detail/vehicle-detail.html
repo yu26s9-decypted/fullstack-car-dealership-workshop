@@ -12,11 +12,7 @@
   >
     <header class="configurator__mobile-header">
       <p class="configurator__eyebrow">
-        @if (vehicle()!.model === 'E1') {
-          Accessible Luxury
-        } @else {
-          Flagship
-        }
+        {{vehicle()?.vehicleTier}}
       </p>
       <h1 class="configurator__title">
         {{vehicle()!.make}} {{vehicle()!.model}}
@@ -38,11 +34,7 @@
     <aside class="configurator__panel">
       <header class="configurator__header">
         <p class="configurator__eyebrow">
-          @if (vehicle()!.model === 'E1') {
-            Accessible Luxury
-          } @else {
-            Flagship
-          }
+           {{vehicle()?.vehicleTier}}
         </p>
         <h1 class="configurator__title">
           {{vehicle()!.make}} {{vehicle()!.model}}
@@ -52,15 +44,15 @@
 
       <dl class="configurator__stats">
         <div>
-          <dt>@if (vehicle()!.model === 'E1') { 270 mi } @else { 420 mi }</dt>
+          <dt>{{vehicle()?.specs?.rangeMiles}}</dt>
           <dd>Range Est.</dd>
         </div>
         <div>
-          <dt>@if (vehicle()!.model === 'E1') { 118 mph } @else { 165 mph }</dt>
+          <dt>{{vehicle()?.specs?.topSpeedMph}}</dt>
           <dd>Top Speed</dd>
         </div>
         <div>
-          <dt>@if (vehicle()!.model === 'E1') { 6.4 sec } @else { 2.8 sec }</dt>
+          <dt>{{vehicle()?.specs?.zeroToSixty}}</dt>
           <dd>0-60 mph</dd>
         </div>
       </dl>

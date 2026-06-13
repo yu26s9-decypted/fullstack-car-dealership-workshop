@@ -1,2 +1,56 @@
 <app-navbar />
 <router-outlet />
+
+<footer class="site-footer" aria-label="Andara footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__brand-block">
+      <a class="site-footer__brand" routerLink="/" aria-label="Andara home">
+        ANDARA
+      </a>
+      <p>
+        Andara is driven by an obsession with better: cleaner energy, more thoughtful mobility,
+        and a standard of design that respects the planet it moves through.
+      </p>
+    </div>
+
+    <nav class="site-footer__nav" aria-label="Footer navigation">
+      <div>
+        <h2>Drive</h2>
+        <a routerLink="/" fragment="vehicles">Vehicles</a>
+        <a routerLink="/">Design Studio</a>
+        <a routerLink="/">Schedule Drive</a>
+      </div>
+
+      <div>
+        <h2>Own</h2>
+        <a routerLink="/">Charging</a>
+        <a routerLink="/">Service</a>
+        <a routerLink="/">Vehicle Recalls</a>
+      </div>
+
+      <div>
+        <h2>Andara</h2>
+        <a routerLink="/">News</a>
+        <a routerLink="/">Locations</a>
+        <a routerLink="/">Contact</a>
+      </div>
+    </nav>
+  </div>
+
+  <div class="site-footer__fine-print">
+    <p>
+      <sup>1</sup> Offers, delivery timing, estimated pricing, and available features are subject to
+      approval, configuration, market availability, and change.
+    </p>
+    <p>
+      <sup>2</sup> Taxes, registration, destination, charging, subscription, and usage-related fees
+      may apply.
+    </p>
+  </div>
+
+  <div class="site-footer__bottom">
+    <span>Andara © 2026</span>
+    <a routerLink="/">Privacy & Legal</a>
+    <a routerLink="/">Get Updates</a>
+  </div>
+</footer>
