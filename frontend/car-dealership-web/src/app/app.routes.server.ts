@@ -8,5 +8,11 @@ export const serverRoutes: ServerRoute[] = [
   {
     path: 'vehicles/:slug',
     renderMode: RenderMode.Client
+  },
+  {
+    path: 'admin', component: AdminPanel, canActivate: [authGuard]
+  },
+  {
+    path: 'admin/login', component: AdminLogin
   }
 ];
