@@ -10,17 +10,29 @@
     class="configurator"
     [class.configurator--entry]="vehicle()!.model === 'E1'"
   >
+    <header class="configurator__mobile-header">
+      <p class="configurator__eyebrow">
+        @if (vehicle()!.model === 'E1') {
+          Accessible Luxury
+        } @else {
+          Flagship
+        }
+      </p>
+      <h1 class="configurator__title">
+        {{vehicle()!.make}} {{vehicle()!.model}}
+      </h1>
+      <p class="configurator__description">{{ vehicle()?.description }}</p>
+    </header>
+
     <section
       class="configurator__visual"
       [attr.aria-label]="vehicle()!.make + ' ' + vehicle()!.model + ' preview'"
     >
-     
-        <img
-          class="configurator__image"
-          [src]="vehicle()?.imageURL"
-          [alt]="vehicle()!.make + ' ' + vehicle()!.model"
-        />
-      
+      <img
+        class="configurator__image"
+        [src]="vehicle()?.imageURL"
+        [alt]="vehicle()!.make + ' ' + vehicle()!.model"
+      />
     </section>
 
     <aside class="configurator__panel">
@@ -35,7 +47,7 @@
         <h1 class="configurator__title">
           {{vehicle()!.make}} {{vehicle()!.model}}
         </h1>
-        <span>{{ vehicle()?.description}}</span>
+        <p class="configurator__description">{{ vehicle()?.description }}</p>
       </header>
 
       <dl class="configurator__stats">
