@@ -1,0 +1,73 @@
+<main>
+  <div class="modal-banner" [style.backgroundImage]="'url(' + vehicle().bannerUrl + ')'">
+    <img class="modal-vehicle-img" [src]="vehicle().imageURL" [alt]="vehicle().make + ' ' + vehicle().model" />
+  </div>
+
+  <header class="modal-header">
+    <div>
+      <p class="modal-eyebrow">{{ vehicle().vehicleTier }}</p>
+      <h1 class="modal-title">{{ vehicle().make }} {{ vehicle().model }}</h1>
+    </div>
+    <button class="modal-close" (click)="onClose()">✕</button>
+  </header>
+
+  <form class="modal-form">
+    <div class="form-row">
+      <div class="form-group">
+        <label>Make</label>
+        <input type="text" [(ngModel)]="form.make" name="make" />
+      </div>
+      <div class="form-group">
+        <label>Model</label>
+        <input type="text" [(ngModel)]="form.model" name="model" />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>Year</label>
+        <input type="number" [(ngModel)]="form.year" name="year" />
+      </div>
+      <div class="form-group">
+        <label>Color</label>
+        <input type="text" [(ngModel)]="form.color" name="color" />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>Price</label>
+        <input type="number" [(ngModel)]="form.price" name="price" />
+      </div>
+      <div class="form-group">
+        <label>Odometer</label>
+        <input type="number" [(ngModel)]="form.odometer" name="odometer" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Vehicle Type</label>
+      <input type="text" [(ngModel)]="form.vehicleType" name="vehicleType" />
+    </div>
+
+    <div class="form-group">
+      <label>Description</label>
+      <textarea [(ngModel)]="form.description" name="description" rows="4"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Image URL</label>
+      <input type="text" [(ngModel)]="form.imageURL" name="imageURL" />
+    </div>
+
+    <div class="form-group">
+      <label>Banner URL</label>
+      <input type="text" [(ngModel)]="form.bannerUrl" name="bannerUrl" />
+    </div>
+
+    <footer class="modal-footer">
+      <button type="button" class="btn-cancel" (click)="onClose()">Cancel</button>
+      <button type="button" class="btn-save" (click)="onSave()">Save Changes</button>
+    </footer>
+  </form>
+</main>

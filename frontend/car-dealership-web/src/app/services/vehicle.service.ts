@@ -18,4 +18,8 @@ export class VehicleService{
     getVehicleByModel(model: string): Observable<Vehicle[]> {
     return this.http.get<Vehicle[]>(`${environment.baseURL}/vehicle?model=${model}`);
     }
+
+    updateVehicle(vehicle: Vehicle): Observable<Vehicle> {
+        return this.http.put<Vehicle>(`${environment.baseURL}/vehicle/${vehicle.id}`, vehicle)
+    }
 }

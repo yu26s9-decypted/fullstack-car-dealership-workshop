@@ -1,0 +1,48 @@
+<section class="admin-panel">
+  <header class="admin-panel__header">
+    <h1>Inventory</h1>
+    <p>{{ vehicles().length }} vehicles</p>
+  </header>
+
+  @if (isLoading()) {
+    <p class="admin-panel__state">Loading inventory...</p>
+  } @else if (vehicles().length === 0) {
+    <p class="admin-panel__state">No vehicles found.</p>
+  } @else {
+    <div class="admin-panel__table-wrap">
+      <table class="admin-panel__table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Vehicle</th>
+            <th>Year</th>
+            <th>Type</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (vehicle of vehicles(); track vehicle.id) {
+            <tr
+              tabindex="0"
+              role="button"
+              (click)="openModal(vehicle)"
+            >
+              <td>{{ vehicle.id }}</td>
+              <td>{{ vehicle.make }} {{ vehicle.model }}</td>
+              <td>{{ vehicle.year }}</td>
+              <td>{{ vehicle.vehicleType }}</td>
+              <td>{{ vehicle.price | currency: 'USD':'symbol':'1.0-0' }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</section>
+
+@if (selectedVehicle()) {
+  <app-admin-vehicle-modal
+    [vehicle]="selectedVehicle()!"
+    (closeModal)="closeModal()"
+  />
+}

@@ -1,0 +1,39 @@
+<section class="admin-login">
+  <form class="admin-login__form" (ngSubmit)="login()">
+    <div class="admin-login__header">
+      <p class="admin-login__wordmark">ANDARA</p>
+      <h1>Admin sign in</h1>
+      <p>Access the inventory management panel.</p>
+    </div>
+
+    <label class="admin-login__field">
+      <span>Username</span>
+      <input
+        type="text"
+        name="username"
+        autocomplete="username"
+        [(ngModel)]="username"
+      />
+    </label>
+
+    <label class="admin-login__field">
+      <span>Password</span>
+      <input
+        type="password"
+        name="password"
+        autocomplete="current-password"
+        [(ngModel)]="password"
+      />
+    </label>
+
+    @if (error()) {
+      <p class="admin-login__error">
+        {{ error() }}
+      </p>
+    }
+
+    <button type="submit" class="admin-login__submit">
+      Sign in
+    </button>
+  </form>
+</section>
