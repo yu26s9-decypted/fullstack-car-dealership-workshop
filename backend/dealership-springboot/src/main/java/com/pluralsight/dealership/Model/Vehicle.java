@@ -32,6 +32,8 @@ public class Vehicle {
     private String description;
     @Column(name = "image_url")
     private String imageURL;
+    @Column(name = "banner_url")
+    private String bannerUrl;
 
     public Vehicle() {}
 
@@ -129,5 +131,13 @@ public class Vehicle {
 
     public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
+    }
+
+    public String getBannerUrl() {
+        return bannerUrl;
+    }
+
+    public void setBannerUrl(String bannerUrl) {
+        this.bannerUrl = bannerUrl;
     }
 }
