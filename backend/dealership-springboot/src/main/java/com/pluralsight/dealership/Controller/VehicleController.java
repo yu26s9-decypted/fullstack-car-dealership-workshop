@@ -3,13 +3,14 @@ package com.pluralsight.dealership.Controller;
 
 import com.pluralsight.dealership.Model.Vehicle;
 import com.pluralsight.dealership.Service.VehicleService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:4200", "https://fullstack-car-dealership-workshop.vercel.app", "https://andara.andytang.tech"})
+
 @RequestMapping("/api/v1/vehicle")
 public class VehicleController {
     private final VehicleService vehicleService;
@@ -66,6 +67,18 @@ public class VehicleController {
         return vehicleService.getAllVehicles();
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Vehicle> getVehicleById(@PathVariable Long id){
+        return vehicleService.getVehicleById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<Vehicle> updateVehicle(@PathVariable Long id, @RequestBody Vehicle vehicle){
+        return vehicleService.updateVehicle(id,vehicle)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
 
     
 }
