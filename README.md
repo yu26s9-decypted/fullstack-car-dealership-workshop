@@ -1,7 +1,6 @@
-
 # Fullstack Car Dealership Workshop
 
-<img width="1916" height="945" alt="Screenshot 2026-06-12 at 6 57 15 PM" src="https://github.com/user-attachments/assets/50a2663e-dc6d-4e23-abe5-4dea1c3da853" />
+<img width="1916" height="945" alt="Screenshot 2026-06-12 at 6 57 15 PM" src="https://github.com/user-attachments/assets/50a2663e-dc6d-4e23-abe5-4dea1c3da853" />
 
 ### Languages and Tools
 
@@ -14,7 +13,7 @@
 ![Apache Maven](https://img.shields.io/badge/apache_maven-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white)
 ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
 
-A full-stack car dealership web application built as a hands-on workshop project. The application showcases **Andara**, a fictional luxury EV brand/mock dealership, with a "modern storefront experience" backed by a RESTful API and a cloud-hosted database.
+A full-stack car dealership web application built as a hands-on workshop project. The application showcases **Andara**, a fictional luxury EV brand and mock dealership, with a modern storefront experience backed by a RESTful API and a cloud-hosted database.
 
 > **Note:** Andara is a fictional EV "company" created solely for the purpose of this workshop. Any resemblance to real brands, vehicles, or campaigns is purely coincidental.
 
@@ -22,28 +21,32 @@ A full-stack car dealership web application built as a hands-on workshop project
 
 ## About
 
-This project is to help deepen my hands-on experience with **Angular** on the frontend and **Spring Boot** on the backend, while practicing real-world full-stack patterns such as layered architecture, REST API design, relational data modeling, and connecting an application to a managed cloud database provided by Aiven.
+This project deepens hands-on experience with **Angular** on the frontend and **Spring Boot** on the backend, while practicing real-world full-stack patterns: layered architecture, REST API design, relational data modeling, and connecting an application to a managed cloud database provided by Aiven.
 
 It is also a workshop for my LTCA, walking through how a modern dealership platform comes together end to end: from the database, to the API layer, to a customer-facing frontend.
 
-## Features to be expected...
+## Features
 
-- **Landing page** — hero section showcasing the Andara S1 with reserve and explore CTAs
-- **Vehicle catalog** — browse, filter, and view detailed listings
-- **RESTful API** — clean, layered Spring Boot backend (Controller → Service → Repository)
-- **Cloud database** — Aiven-managed MySQL with SSL-required connections
-- **Relational data layer** — JPA/Hibernate entity mapping
-  
+- **Landing page:** hero section showcasing the Andara brand
+- **Vehicle catalog:** browse and view detailed listings for each model (currently api only)
+- **RESTful API:** clean, layered Spring Boot backend (Controller, Service, Repository)
+- **Cloud database:** Aiven-managed MySQL with SSL-required connections
+- **Cloud image hosting:** vehicle and banner images served via Cloudinary CDN
+- **Relational data layer:** JPA/Hibernate
+- **Deployment:** frontend on Vercel, backend on Render
+
 ## Tech Stack
 
 | Layer | Technology |
 |---|---|
-| Frontend | Angular, TypeScript, CSS |
-| Backend | Java, Spring Boot 4 |
+| Frontend | Angular 21, TypeScript, CSS |
+| Backend | Java, Spring Boot |
 | Database | MySQL 8.4 (hosted on Aiven) |
 | ORM | Spring Data JPA / Hibernate |
+| Image Hosting | Cloudinary |
 | Connection Pooling | HikariCP |
 | Build Tools | Angular CLI, Maven |
+| Deployment | Vercel (frontend), Render (backend) |
 
 ## Project Structure
 
@@ -85,7 +88,7 @@ spring.jpa.show-sql=true
 spring.jpa.open-in-view=false
 ```
 
-The database password is read from an environment variable.
+The database password is read from an environment variable:
 
 ```bash
 export DB_PASSWORD=your_password
@@ -110,20 +113,19 @@ ng serve
 
 The app will be available at `http://localhost:4200`.
 
-## Expected API Endpoint Overview
+## API Endpoint Overview
 
 | Method | Endpoint | Description |
 |---|---|---|
-| `GET` | `/api/vehicles` | List all vehicles |
-| `GET` | `/api/vehicles/{id}` | Get a vehicle by ID |
-| `POST` | `/api/vehicles` | Add a new vehicle |
-| `PUT` | `/api/vehicles/{id}` | Update a vehicle |
-| `DELETE` | `/api/vehicles/{id}` | Remove a vehicle |
+| `GET` | `/api/v1/vehicle` | List all vehicles |
+| `GET` | `/api/v1/vehicle?model={model}` | Get vehicles by model |
+| `GET` | `/api/v1/dealership` | List all dealerships |
 
 ## Personal Learning Goals
 
 - Strengthen Angular fundamentals: components, services, routing, and HTTP client
 - Deepen Spring Boot skills: layered architecture, REST controllers, validation, and JPA
+- Practice full-stack deployment: environment variables, CORS configuration, and cloud hosting
 
 ## Author
 
