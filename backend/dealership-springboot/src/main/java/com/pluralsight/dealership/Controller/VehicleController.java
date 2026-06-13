@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"http://localhost:4200", "https://fullstack-car-dealership-workshop.vercel.app"})
 @RequestMapping("/api/v1/vehicle")
 public class VehicleController {
     private final VehicleService vehicleService;

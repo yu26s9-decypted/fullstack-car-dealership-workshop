@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/dealership")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"http://localhost:4200", "https://fullstack-car-dealership-workshop.vercel.app"})
 public class DealershipController {
     private final DealershipService dealershipService;
 
