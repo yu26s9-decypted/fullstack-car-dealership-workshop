@@ -11,12 +11,8 @@
     [class.configurator--entry]="vehicle()!.model === 'E1'"
   >
     <header class="configurator__mobile-header">
-      <p class="configurator__eyebrow">
-        {{vehicle()?.vehicleTier}}
-      </p>
-      <h1 class="configurator__title">
-        {{vehicle()!.make}} {{vehicle()!.model}}
-      </h1>
+      <p class="configurator__eyebrow">{{vehicle()?.vehicleTier}}</p>
+      <h1 class="configurator__title">{{vehicle()!.make}} {{vehicle()!.model}}</h1>
       <p class="configurator__description">{{ vehicle()?.description }}</p>
     </header>
 
@@ -33,87 +29,147 @@
 
     <aside class="configurator__panel">
       <header class="configurator__header">
-        <p class="configurator__eyebrow">
-           {{vehicle()?.vehicleTier}}
-        </p>
-        <h1 class="configurator__title">
-          {{vehicle()!.make}} {{vehicle()!.model}}
-        </h1>
+        <p class="configurator__eyebrow">{{vehicle()?.vehicleTier}}</p>
+        <h1 class="configurator__title">{{vehicle()!.make}} {{vehicle()!.model}}</h1>
         <p class="configurator__description">{{ vehicle()?.description }}</p>
       </header>
 
       <dl class="configurator__stats">
         <div>
-          <dt>{{vehicle()?.specs?.rangeMiles}}</dt>
+          <dt>{{vehicle()?.specs?.rangeMiles}} mi</dt>
           <dd>Range Est.</dd>
         </div>
         <div>
-          <dt>{{vehicle()?.specs?.topSpeedMph}}</dt>
+          <dt>{{vehicle()?.specs?.topSpeedMph}} mph</dt>
           <dd>Top Speed</dd>
         </div>
         <div>
-          <dt>{{vehicle()?.specs?.zeroToSixty}}</dt>
+          <dt>{{vehicle()?.specs?.zeroToSixty}} sec</dt>
           <dd>0-60 mph</dd>
         </div>
       </dl>
 
       <div class="configurator__tabs" aria-label="Payment type">
-        <button type="button">Cash</button>
-        <button type="button">Lease</button>
-        <button class="is-active" type="button">Finance</button>
+        <button
+          type="button"
+          [class.is-active]="selectedPaymentType() === 'cash'"
+          (click)="selectPaymentType('cash')"
+        >Cash</button>
+        <button
+          type="button"
+          [class.is-active]="selectedPaymentType() === 'finance'"
+          (click)="selectPaymentType('finance')"
+        >Finance</button>
       </div>
 
       <section class="configurator__options" aria-label="Available configurations">
         <button class="configurator-option is-selected" type="button">
           <span>
-            @if (vehicle()!.model === 'E1') {
-              Standard Range
-            } @else {
-              Dual Motor
-            }
+            @if (vehicle()!.model === 'E1') { Standard Range }
+            @else { Dual Motor }
           </span>
           <strong>{{vehicle()!.price | currency: 'USD':'symbol':'1.0-0'}}</strong>
         </button>
 
         <button class="configurator-option" type="button">
           <span>
-            @if (vehicle()!.model === 'E1') {
-              Premium Comfort
-            } @else {
-              Grand Touring
-            }
+            @if (vehicle()!.model === 'E1') { Premium Comfort }
+            @else { Grand Touring }
           </span>
           <strong>{{(vehicle()!.price + 7500) | currency: 'USD':'symbol':'1.0-0'}}</strong>
         </button>
 
         <button class="configurator-option" type="button">
           <span>
-            @if (vehicle()!.model === 'E1') {
-              City Performance
-            } @else {
-              Performance Reserve
-            }
+            @if (vehicle()!.model === 'E1') { City Performance }
+            @else { Performance Reserve }
           </span>
           <strong>{{(vehicle()!.price + 14000) | currency: 'USD':'symbol':'1.0-0'}}</strong>
         </button>
       </section>
 
+      @if (selectedPaymentType() === 'finance') {
+        <section class="configurator__finance-form">
+          <div class="finance-row">
+            <div class="finance-group">
+              <label>Down Payment</label>
+              <input
+                type="number"
+                [value]="downPayment()"
+                (change)="downPayment.set(+$any($event.target).value); getEstimate()"
+                placeholder="0"
+                min="0"
+              />
+            </div>
+            <div class="finance-group">
+              <label>Term (months)</label>
+              <div class="finance-select">
+                <button
+                  class="finance-select__trigger"
+                  type="button"
+                  [attr.aria-expanded]="isTermMenuOpen()"
+                  aria-haspopup="listbox"
+                  (click)="toggleTermMenu()"
+                >
+                  <span>{{ termMonth() }} mo</span>
+                  <span class="finance-select__chevron" aria-hidden="true">⌄</span>
+                </button>
+
+                @if (isTermMenuOpen()) {
+                  <div class="finance-select__menu" role="listbox">
+                    @for (term of termOptions; track term) {
+                      <button
+                        class="finance-select__option"
+                        type="button"
+                        role="option"
+                        [class.is-selected]="termMonth() === term"
+                        [attr.aria-selected]="termMonth() === term"
+                        (click)="selectTermMonth(term)"
+                      >
+                        {{ term }} mo
+                      </button>
+                    }
+                  </div>
+                }
+              </div>
+            </div>
+          </div>
+        </section>
+      }
+
       <button class="configurator__compare" type="button">
         View & Compare Features
       </button>
 
-      <section class="configurator__placeholder-form" aria-label="Future configuration form placeholder">
-        <p class="text-low-contrast">
-          Placeholder area for colors, wheels, trade-in, financing, and delivery options.
-        </p>
-      </section>
-
       <footer class="configurator__summary">
         <div>
-          <p class="configurator__summary-price">
-            {{(vehicle()!.price / 84) | currency: 'USD':'symbol':'1.0-0'}}/mo
-          </p>
-          <p class="text-low-contrast">after estimated savings</p>
+          @if (selectedPaymentType() === 'cash') {
+            <p class="configurator__summary-price">
+              {{vehicle()!.price | currency: 'USD':'symbol':'1.0-0'}}
+            </p>
+            <p class="text-low-contrast">full purchase price</p>
+          } @else if (estimatePayment()) {
+            <p class="configurator__summary-price">
+              {{estimatePayment()!.monthlyPayment| currency: 'USD':'symbol':'1.0-0'}}/mo
+            </p>
+            @if(isCalculating()){
+              <p class="text-low-contrast">Calculating your estimate...</p>
+            } @else{
+              
+                @if(downPayment() > vehicle()!.price){
+                <p class="text-low-contrast">You cant pay more than the vehicle is worth silly</p>
+                } @else {
+                  <p class="text-low-contrast">Est. monthly payment. Excludes taxes, fees, and final financing terms.</p>
+                }
+             
+            }
+           
+          } @else {
+            <p class="configurator__summary-price">
+              {{(vehicle()!.price / 84) | currency: 'USD':'symbol':'1.0-0'}}/mo
+            </p>
+            <p class="text-low-contrast">after estimated savings</p>
+          }
         </div>
         <button class="btn-luxury btn-luxury-primary" type="button">
           Order Now

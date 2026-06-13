@@ -53,8 +53,7 @@
 }
 
 .configurator__panel {
-  @apply flex min-h-screen flex-col border-l border-[#edf0f5] bg-white px-7 pb-7 pt-24 sm:px-9 lg:sticky lg:top-0 lg:h-screen lg:overflow-y-auto;
-  scrollbar-gutter: stable;
+  @apply flex min-h-screen flex-col border-l border-[#edf0f5] bg-white px-7 pb-36 pt-24 sm:px-9 lg:sticky lg:top-0;
 }
 
 .configurator__header {
@@ -134,11 +133,19 @@
 }
 
 .configurator__summary {
-  @apply sticky bottom-0 z-30 mt-auto flex items-center justify-between gap-4 rounded-lg border border-[#edf0f5] bg-white p-4 shadow-[0_1rem_2.5rem_rgb(7_14_32_/_10%)];
+  @apply fixed inset-x-0 bottom-0 z-40 grid grid-cols-[1fr_auto] items-center gap-6 border-t border-[#edf0f5] bg-white px-6 py-5 shadow-[0_-1rem_2rem_rgb(7_14_32_/_7%)] sm:px-8 lg:px-12;
 }
 
 .configurator__summary-price {
   @apply m-0 text-2xl font-semibold text-[#182033];
+}
+
+.configurator__summary .text-low-contrast {
+  @apply mt-1 max-w-[18rem] text-sm font-medium leading-6;
+}
+
+.configurator__summary .btn-luxury {
+  @apply min-w-[12rem];
 }
 
 .configurator--entry .configurator__visual {
@@ -163,7 +170,7 @@
   }
 
   .configurator__panel {
-    @apply h-auto min-h-0 overflow-visible border-l-0 pt-10 shadow-none;
+    @apply h-auto min-h-0 overflow-visible border-l-0 pb-40 pt-10 shadow-none;
   }
 }
 
@@ -177,7 +184,19 @@
   }
 
   .configurator__summary {
-    @apply bottom-3 grid;
+    @apply grid-cols-1 px-6;
+  }
+
+  .configurator__summary .text-low-contrast {
+    @apply max-w-none;
+  }
+
+  .configurator__summary .btn-luxury {
+    @apply w-full;
+  }
+
+  .finance-row {
+    @apply grid-cols-1;
   }
 }
 
@@ -197,4 +216,59 @@
   .configurator__image {
     animation: none;
   }
+}
+
+.configurator__finance-form {
+  @apply mt-4 grid gap-4;
+}
+
+.finance-row {
+  @apply grid grid-cols-2 gap-4;
+}
+
+.finance-group {
+  @apply grid gap-2;
+}
+
+.finance-group label {
+  @apply text-xs font-semibold uppercase tracking-[0.12em] text-[#5c5e62];
+}
+
+.finance-group input,
+.finance-select__trigger {
+  @apply min-h-12 w-full rounded border border-[#d6dae2] bg-white px-4 text-sm font-medium text-[#182033] outline-none transition hover:border-[#8d95a4] focus:border-[#182033] focus:bg-[#f8faff];
+}
+
+.finance-group input[type='number'] {
+  appearance: textfield;
+}
+
+.finance-group input[type='number']::-webkit-inner-spin-button,
+.finance-group input[type='number']::-webkit-outer-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+.finance-select {
+  @apply relative;
+}
+
+.finance-select__trigger {
+  @apply flex items-center justify-between text-left;
+}
+
+.finance-select__chevron {
+  @apply text-base leading-none text-[#5c5e62];
+}
+
+.finance-select__menu {
+  @apply absolute left-0 right-0 top-[calc(100%+0.35rem)] z-40 overflow-hidden rounded border border-[#d6dae2] bg-white py-1 shadow-[0_1rem_2rem_rgb(7_14_32_/_14%)];
+}
+
+.finance-select__option {
+  @apply flex w-full items-center px-4 py-3 text-left text-sm font-medium text-[#182033] transition hover:bg-[#f8faff] focus:bg-[#f8faff] focus:outline-none;
+}
+
+.finance-select__option.is-selected {
+  @apply bg-[#f8faff] text-[#3f63e6];
 }
