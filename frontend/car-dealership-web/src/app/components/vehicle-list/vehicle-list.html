@@ -1,79 +1,100 @@
-<section class="inventory-section" aria-label="Andara vehicle lineup">
+<section id="vehicles" class="inventory-section" aria-label="Andara vehicle lineup">
   <div class="inventory-container">
     @if(isLoading()) {
-        <p>loading data...</p>
-    } @else {
-    <div class="vehicle-grid">
-      @for(vehicle of vehicles(); track vehicle.id; let index = $index){
-        <article
-          class="vehicle-showcase"
-          [class.vehicle-showcase--wide]="index === 0"
-          [class.vehicle-showcase--entry]="vehicle.model === 'E1'"
-          [routerLink]="['/vehicles', vehicle.make + '-' + vehicle.model + '-' + vehicle.year]"
-          style="cursor: pointer;"
-        >
-          @if (vehicle.model === 'S1') {
-            <img
-              class="vehicle-showcase__media"
-              src="/asset/AndaraS1.png"
-              [alt]="vehicle.make + ' ' + vehicle.model"
-            />
-          } @else {
-            <div class="vehicle-showcase__placeholder" aria-hidden="true">
-              <span>{{vehicle.model}}</span>
-              <img
-              class="vehicle-showcase__media"
-              src="/asset/AndaraE1.png"
-              [alt]="vehicle.make + ' ' + vehicle.model"
-            />
+      <p class="inventory-loading-label">Loading Andara vehicles</p>
+
+      <div class="vehicle-grid" aria-hidden="true">
+        @for(item of [0, 1]; track item) {
+          <article class="vehicle-showcase vehicle-showcase--skeleton">
+            <span class="vehicle-skeleton vehicle-skeleton--kicker"></span>
+
+            <div class="vehicle-showcase__content">
+              <span class="vehicle-skeleton vehicle-skeleton--title"></span>
+              <span class="vehicle-skeleton vehicle-skeleton--meta"></span>
+              <span class="vehicle-skeleton vehicle-skeleton--meta-short"></span>
+
+              <div class="vehicle-showcase__actions">
+                <span class="vehicle-skeleton vehicle-skeleton--button"></span>
+                <span class="vehicle-skeleton vehicle-skeleton--button vehicle-skeleton--button-secondary"></span>
+              </div>
             </div>
-          }
-
-          <p class="vehicle-showcase__kicker">
-            @if (vehicle.model === 'E1') {
-              Accessible Luxury
+          </article>
+        }
+      </div>
+    } @else {
+      <div class="vehicle-grid">
+        @for(vehicle of vehicles(); track vehicle.id; let index = $index){
+          <article
+            class="vehicle-showcase"
+            [class.vehicle-showcase--wide]="index === 0"
+            [class.vehicle-showcase--entry]="vehicle.model === 'E1'"
+            [routerLink]="['/vehicles', vehicle.make + '-' + vehicle.model + '-' + vehicle.year]"
+          >
+            @if (vehicle.model === 'S1') {
+              <img
+                class="vehicle-showcase__media"
+                src="/asset/AndaraS1.png"
+                [alt]="vehicle.make + ' ' + vehicle.model"
+              />
+            } @else if (vehicle.model === 'E1') {
+              <img
+                class="vehicle-showcase__media"
+                src="/asset/AndaraE1.png"
+                [alt]="vehicle.make + ' ' + vehicle.model"
+              />
             } @else {
-              {{vehicle.vehicleType}}
+              <div class="vehicle-showcase__placeholder" aria-hidden="true">
+                <span>{{vehicle.model}}</span>
+                <small>Image coming soon</small>
+              </div>
             }
-          </p>
 
-          <div class="vehicle-showcase__content">
-            <h2 class="vehicle-showcase__title">
-              {{vehicle.make}} {{vehicle.model}}
-            </h2>
-            <p class="vehicle-showcase__meta">
+            <p class="vehicle-showcase__kicker">
               @if (vehicle.model === 'E1') {
-                {{vehicle.color}} finish. The smarter way into Andara electric luxury.
+                Accessible Luxury
               } @else {
-                {{vehicle.color}} finish. Electric luxury, available now.
+                {{vehicle.vehicleType}}
               }
             </p>
 
-            <div class="vehicle-showcase__actions">
-              <button class="btn-luxury btn-luxury-primary" type="button">
+            <div class="vehicle-showcase__content">
+              <h2 class="vehicle-showcase__title">
+                {{vehicle.make}} {{vehicle.model}}
+              </h2>
+              <p class="vehicle-showcase__meta">
                 @if (vehicle.model === 'E1') {
-                  Explore E1
+                  {{vehicle.color}} finish. The smarter way into Andara electric luxury.
                 } @else {
-                  Order Now
+                  {{vehicle.color}} finish. Electric luxury, available now.
                 }
-              </button>
-              
-              <button class="btn-luxury btn-luxury-secondary" type="button">
-                Learn More
-              </button>
+              </p>
+
+              <div class="vehicle-showcase__actions">
+                <button class="btn-luxury btn-luxury-primary" type="button">
+                  @if (vehicle.model === 'E1') {
+                    Explore E1
+                  } @else {
+                    Order Now
+                  }
+                </button>
+
+                <button class="btn-luxury btn-luxury-secondary" type="button">
+                  Learn More
+                </button>
+              </div>
+
+              <span class="text-low-contrast">
+                MSRP: {{vehicle.price | currency: 'USD':'symbol':'1.0-0'}}
+              </span>
             </div>
-            <div>
-                <span class="text-">MSRP: {{vehicle.price | currency: 'USD':'symbol'}}</span>
-            </div>
-          </div>
-        </article>
-      } @empty {
-        <article class="inventory-empty">
-          <p class="inventory-eyebrow">Current Inventory</p>
-          <h2 class="inventory-title">No vehicles are available right now.</h2>
-        </article>
-      }
-    </div>
+          </article>
+        } @empty {
+          <article class="inventory-empty">
+            <p class="inventory-eyebrow">Current Inventory</p>
+            <h2 class="inventory-title">No vehicles are available right now.</h2>
+          </article>
+        }
+      </div>
     }
   </div>
 </section>

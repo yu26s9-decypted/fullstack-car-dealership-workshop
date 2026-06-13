@@ -11,4 +11,6 @@ export interface Vehicle{
     odometer: number;
     price: number;
     dealership: Dealership;
+    description: string;
+    imageURL: string;
 }

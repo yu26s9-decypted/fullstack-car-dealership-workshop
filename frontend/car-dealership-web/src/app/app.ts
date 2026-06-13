@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
-import { VehicleList } from "./components/vehicle-list/vehicle-list";
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
+import { Navbar } from './components/navbar/navbar';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.html',
   styleUrl: './app.css',
-  imports: [VehicleList, RouterLink, RouterOutlet]
+  imports: [RouterOutlet, Navbar]
 })
 export class App {
-  
 }

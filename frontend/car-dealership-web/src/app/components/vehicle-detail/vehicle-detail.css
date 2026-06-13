@@ -1,10 +1,12 @@
-.spinner {
-  display: grid;
-  place-items: center;
-  place-content: center;
-  gap: 1rem;
-  min-height: 100dvh;
-  background: #f7f9ff;
+@reference "../../../styles.css";
+
+:host {
+  @apply block bg-white;
+}
+
+.spinner,
+.not-found {
+  @apply grid min-h-screen place-content-center place-items-center gap-4 bg-[#f8faff] px-6 text-center;
 }
 
 .spinner__ring {
@@ -18,4 +20,141 @@
 
 @keyframes spin {
   to { transform: rotate(360deg); }
+}
+
+.configurator {
+  @apply grid min-h-screen bg-white lg:grid-cols-[minmax(0,1fr)_27rem];
+}
+
+.configurator__visual {
+  @apply relative flex min-h-[34rem] items-center justify-center overflow-hidden bg-[#f8faff] px-6 py-20 sm:px-10 lg:min-h-screen;
+}
+
+.configurator__visual::before {
+  @apply absolute inset-x-0 bottom-0 h-56 content-[''];
+  background: linear-gradient(0deg, rgb(248 250 255 / 100%) 0%, rgb(248 250 255 / 0%) 100%);
+}
+
+.configurator__image {
+  @apply relative z-10 max-h-[72vh] w-full max-w-6xl object-contain drop-shadow-[0_3rem_3.5rem_rgb(7_14_32_/_18%)];
+}
+
+.configurator__placeholder {
+  @apply relative z-10 grid aspect-[16/9] w-full max-w-4xl place-items-center rounded-lg bg-[radial-gradient(circle_at_65%_30%,rgb(63_99_230_/_18%),transparent_34%),linear-gradient(135deg,#f8faff_0%,#dfe6f3_52%,#bcc8da_100%)] text-center shadow-[0_3rem_3.5rem_rgb(7_14_32_/_12%)];
+}
+
+.configurator__placeholder span {
+  @apply block font-['Syncopate'] text-7xl font-normal uppercase tracking-[0.12em] text-[#182033]/70;
+}
+
+.configurator__placeholder small {
+  @apply mt-4 block text-sm font-semibold uppercase tracking-[0.2em] text-[#3f63e6]/80;
+}
+
+.configurator__panel {
+  @apply flex min-h-screen flex-col bg-white px-7 pb-7 pt-20 shadow-[-1rem_0_3rem_rgb(7_14_32_/_5%)] sm:px-9 lg:sticky lg:top-0;
+}
+
+.configurator__header {
+  @apply text-center;
+}
+
+.configurator__eyebrow {
+  @apply m-0 text-xs font-semibold uppercase tracking-[0.18em] text-[#3f63e6];
+}
+
+.configurator__title {
+  @apply mt-2 font-['Syncopate'] text-5xl font-normal uppercase tracking-[0.08em] text-[#182033];
+}
+
+.configurator__stats {
+  @apply mt-8 grid grid-cols-3 gap-4 text-center;
+}
+
+.configurator__stats div {
+  @apply grid gap-1;
+}
+
+.configurator__stats dt {
+  @apply text-lg font-semibold text-[#182033];
+}
+
+.configurator__stats dd {
+  @apply m-0 text-xs text-[#5c5e62];
+}
+
+.configurator__tabs {
+  @apply mt-8 grid grid-cols-3 border-b border-[#d6dae2];
+}
+
+.configurator__tabs button {
+  @apply border-b-2 border-transparent px-3 py-3 text-sm font-semibold text-[#5c5e62];
+}
+
+.configurator__tabs .is-active {
+  @apply border-[#182033] text-[#182033];
+}
+
+.configurator__options {
+  @apply mt-4 grid gap-3;
+}
+
+.configurator-option {
+  @apply flex min-h-16 items-center justify-between rounded border border-[#d6dae2] bg-white px-4 text-left text-sm text-[#5c5e62] transition hover:border-[#8d95a4] hover:bg-[#f8faff];
+}
+
+.configurator-option span {
+  @apply font-semibold text-[#182033];
+}
+
+.configurator-option strong {
+  @apply font-semibold text-[#182033];
+}
+
+.configurator-option.is-selected {
+  @apply border-[#182033] bg-[#f8faff];
+}
+
+.configurator__compare {
+  @apply mt-4 flex min-h-12 items-center justify-center rounded bg-[#f4f4f4] px-4 text-sm font-semibold text-[#182033] transition hover:bg-[#eef2f7];
+}
+
+.configurator__placeholder-form {
+  @apply mt-5 rounded border border-dashed border-[#d6dae2] bg-[#f8faff] p-4 text-sm leading-6;
+}
+
+.configurator__summary {
+  @apply mt-auto flex items-center justify-between gap-4 border-t border-[#edf0f5] pt-6;
+}
+
+.configurator__summary-price {
+  @apply m-0 text-2xl font-semibold text-[#182033];
+}
+
+.configurator--entry .configurator__visual {
+  @apply bg-[#f4f7fb];
+}
+
+.configurator--entry .configurator__image {
+  @apply drop-shadow-[0_3rem_3.5rem_rgb(63_99_230_/_14%)];
+}
+
+@media (max-width: 1023px) {
+  .configurator__panel {
+    @apply min-h-0 pt-10 shadow-none;
+  }
+}
+
+@media (max-width: 640px) {
+  .configurator {
+    @apply min-h-0;
+  }
+
+  .configurator__visual {
+    @apply min-h-[28rem] py-14;
+  }
+
+  .configurator__summary {
+    @apply grid;
+  }
 }
