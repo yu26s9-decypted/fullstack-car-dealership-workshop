@@ -61,5 +61,9 @@ public class VehicleService {
         return vehicleRepository.findByOdometerGreaterThanEqual(minRange);
     }
 
+    public List<Vehicle> getVehiclesByOdometerRange(int min, int max) {
+        return vehicleRepository.findByOdometerBetween(min, max);
+    }
+
 
 }

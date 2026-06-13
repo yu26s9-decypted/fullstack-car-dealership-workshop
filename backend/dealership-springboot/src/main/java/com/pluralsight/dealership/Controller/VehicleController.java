@@ -54,6 +54,9 @@ public class VehicleController {
        if(minPrice != null){
            return vehicleService.getVehiclesByMinPrice(minPrice);
        }
+        if (odometerMinRange != null && odometerMaxRange != null) {
+            return vehicleService.getVehiclesByOdometerRange(odometerMinRange, odometerMaxRange);
+        }
        if(odometerMinRange != null) {
            return vehicleService.getVehiclesByMinRange(odometerMinRange);
        }
