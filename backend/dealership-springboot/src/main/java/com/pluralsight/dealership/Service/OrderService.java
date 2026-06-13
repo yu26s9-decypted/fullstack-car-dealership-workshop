@@ -32,7 +32,7 @@ public class OrderService {
                 monthly = BigDecimal.ZERO;
             }
 
-            req.setMonthlyPrice(monthly);
+            req.setMonthlyPayment(monthly);
             req.setTotalPrice(price);
             return req;
         });

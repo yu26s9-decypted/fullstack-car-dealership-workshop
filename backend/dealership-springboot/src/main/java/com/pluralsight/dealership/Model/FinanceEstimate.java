@@ -20,11 +20,11 @@ public class FinanceEstimate {
         this.totalPayment = totalPayment;
     }
 
-    public BigDecimal getMonthlyPrice() {
+    public BigDecimal getMonthlyPayment() {
         return monthlyPayment;
     }
 
-    public void setMonthlyPrice(BigDecimal monthlyPayment) {
+    public void setMonthlyPayment(BigDecimal monthlyPayment) {
         this.monthlyPayment = monthlyPayment;
     }
 
