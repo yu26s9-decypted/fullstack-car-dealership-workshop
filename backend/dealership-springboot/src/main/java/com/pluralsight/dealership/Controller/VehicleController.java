@@ -3,15 +3,13 @@ package com.pluralsight.dealership.Controller;
 
 import com.pluralsight.dealership.Model.Vehicle;
 import com.pluralsight.dealership.Service.VehicleService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api/v1/vehicle")
 public class VehicleController {
     private final VehicleService vehicleService;
@@ -67,5 +65,7 @@ public class VehicleController {
 
         return vehicleService.getAllVehicles();
     }
+
+
     
 }

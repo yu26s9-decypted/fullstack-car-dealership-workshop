@@ -1,6 +1,5 @@
 package com.pluralsight.dealership.Service;
 
-import com.pluralsight.dealership.Model.Dealership;
 import com.pluralsight.dealership.Model.Vehicle;
 import com.pluralsight.dealership.Repository.VehicleRepository;
 import org.springframework.stereotype.Service;
@@ -64,6 +63,7 @@ public class VehicleService {
     public List<Vehicle> getVehiclesByOdometerRange(int min, int max) {
         return vehicleRepository.findByOdometerBetween(min, max);
     }
+
 
 
 }

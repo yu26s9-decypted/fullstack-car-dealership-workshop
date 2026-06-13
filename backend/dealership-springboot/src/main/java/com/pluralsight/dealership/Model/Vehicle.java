@@ -29,7 +29,9 @@ public class Vehicle {
     @JsonBackReference
     @JoinColumn(name = "dealership_id")
     private Dealership dealership;
-
+    private String description;
+    @Column(name = "image_url")
+    private String imageURL;
 
     public Vehicle() {}
 
@@ -107,5 +109,25 @@ public class Vehicle {
 
     public void setDealership(Dealership dealership){
         this.dealership = dealership;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
 }

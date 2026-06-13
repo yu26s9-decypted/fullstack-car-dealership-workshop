@@ -3,16 +3,14 @@ package com.pluralsight.dealership.Controller;
 import com.pluralsight.dealership.Model.Dealership;
 import com.pluralsight.dealership.Service.DealershipService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/dealership")
+@CrossOrigin(origins = "http://localhost:4200")
 public class DealershipController {
     private final DealershipService dealershipService;
 
