@@ -37,6 +37,8 @@ public class Vehicle {
     @OneToOne(mappedBy = "vehicle", cascade = CascadeType.ALL)
     @JsonIgnoreProperties("vehicle")
     private VehiclesSpecs specs;
+    @Column(name = "vehicle_tier")
+    private String vehicleTier;
 
 
     public Vehicle() {}
@@ -153,5 +155,11 @@ public class Vehicle {
         this.specs = specs;
     }
 
+    public String getVehicleTier() {
+        return vehicleTier;
+    }
 
+    public void setVehicleTier(String vehicleTier) {
+        this.vehicleTier = vehicleTier;
+    }
 }
