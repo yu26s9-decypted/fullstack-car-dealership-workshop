@@ -2,6 +2,7 @@ package com.pluralsight.dealership.Model;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -34,6 +35,7 @@ public class Vehicle {
     @Column(name = "banner_url")
     private String bannerUrl;
     @OneToOne(mappedBy = "vehicle", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("vehicle")
     private VehiclesSpecs specs;
 
 
