@@ -29,6 +29,7 @@ public class Vehicle {
     @JsonBackReference
     @JoinColumn(name = "dealership_id")
     private Dealership dealership;
+    @Column(name = "description", columnDefinition = "TEXT")
     private String description;
     @Column(name = "image_url")
     private String imageURL;
