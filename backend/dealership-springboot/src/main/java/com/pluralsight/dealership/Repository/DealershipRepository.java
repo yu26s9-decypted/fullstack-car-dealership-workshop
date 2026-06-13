@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface DealershipRepository extends JpaRepository<Dealership, Long> {
-    List<Dealership> findByAddress(String address);
+    Optional<Dealership> findByAddress(String address);
     Optional<Dealership> findByName(String name);
-    Optional<Dealership> findByPhone(String phone);
 }

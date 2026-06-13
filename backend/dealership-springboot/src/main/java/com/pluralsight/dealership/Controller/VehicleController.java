@@ -21,7 +21,7 @@ public class VehicleController {
     }
     
     @GetMapping
-    public List<Vehicle> getAllVehicle(
+    public List<Vehicle> getVehicle(
             @RequestParam(required = false) String make,
             @RequestParam(required = false) String model,
             @RequestParam(required = false) String color,
