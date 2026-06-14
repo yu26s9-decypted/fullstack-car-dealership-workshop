@@ -34,7 +34,7 @@ public class Vehicle {
     private String imageURL;
     @Column(name = "banner_url")
     private String bannerUrl;
-    @OneToOne(mappedBy = "vehicle", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "vehicle", cascade = CascadeType.ALL, fetch =  FetchType.EAGER)
     @JsonIgnoreProperties("vehicle")
     private VehiclesSpecs specs;
     @Column(name = "vehicle_tier")
