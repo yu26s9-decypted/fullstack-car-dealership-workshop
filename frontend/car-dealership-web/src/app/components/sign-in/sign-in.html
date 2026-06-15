@@ -1,0 +1,44 @@
+<section class="auth-page">
+  <header class="auth-page__topbar">
+    <a class="auth-page__brand" routerLink="/">ANDARA</a>
+    <span>US</span>
+  </header>
+
+  <main class="auth-page__main">
+    <form class="auth-form">
+      <div class="auth-form__header">
+        <h1>Sign in</h1>
+        <p>Access your Andara profile, saved vehicles, and order updates.</p>
+      </div>
+
+      <label class="auth-field">
+        <span>Email</span>
+        <input type="email" name="email" autocomplete="email" />
+      </label>
+
+      <button class="auth-button auth-button--primary" type="button">
+        Continue
+      </button>
+
+      <a class="auth-form__helper" routerLink="/">
+        Trouble signing in?
+      </a>
+
+      <div class="auth-divider">
+        <span></span>
+        <p>Or</p>
+        <span></span>
+      </div>
+
+      <a class="auth-button auth-button--secondary" routerLink="/create-account">
+        Create Account
+      </a>
+    </form>
+  </main>
+
+  <footer class="auth-page__footer">
+    <span>Andara © 2026</span>
+    <a routerLink="/">Privacy & Legal</a>
+    <a routerLink="/">Contact</a>
+  </footer>
+</section>

@@ -2,6 +2,8 @@
   "rewrites": [
     { "source": "/admin", "destination": "/" },
     { "source": "/admin/(.*)", "destination": "/" },
+    { "source": "/login", "destination": "/" },
+    { "source": "/create-account", "destination": "/" },
     { "source": "/vehicles/(.*)", "destination": "/" },
     { "source": "/(.*)", "destination": "/" }
   ]

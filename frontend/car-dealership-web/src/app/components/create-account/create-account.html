@@ -1,0 +1,86 @@
+<section class="auth-page">
+  <header class="auth-page__topbar">
+    <a class="auth-page__brand" routerLink="/">ANDARA</a>
+    <span>US</span>
+  </header>
+
+  <main class="auth-page__main">
+    <form class="auth-form">
+      <div class="auth-form__header">
+        <p class="auth-form__step">Step 1 of 3</p>
+        <h1>Create account</h1>
+      </div>
+
+      <label class="auth-field">
+        <span>Region</span>
+        <div class="auth-select">
+          <button
+            class="auth-select__trigger"
+            type="button"
+            aria-haspopup="listbox"
+            [attr.aria-expanded]="isCountryMenuOpen()"
+            (click)="toggleCountryMenu()"
+          >
+            <span>{{ selectedCountry() }}</span>
+            <span class="auth-select__chevron" aria-hidden="true">⌄</span>
+          </button>
+
+          @if (isCountryMenuOpen()) {
+            <div class="auth-select__menu" role="listbox">
+              @for (country of countries; track country) {
+                <button
+                  class="auth-select__option"
+                  type="button"
+                  role="option"
+                  [class.is-selected]="selectedCountry() === country"
+                  [attr.aria-selected]="selectedCountry() === country"
+                  (click)="selectCountry(country)"
+                >
+                  {{ country }}
+                </button>
+              }
+            </div>
+          }
+        </div>
+      </label>
+
+      <label class="auth-field">
+        <span>First Name</span>
+        <input type="text" name="firstName" autocomplete="given-name" />
+      </label>
+
+      <label class="auth-field">
+        <span>Last Name</span>
+        <input type="text" name="lastName" autocomplete="family-name" />
+      </label>
+
+      <p class="auth-form__legal">
+        By clicking 'Next', I understand and agree to Andara's
+        <a routerLink="/">Privacy Notice</a> and
+        <a routerLink="/">Terms of Use</a> for creating an Andara Account. I authorize Andara
+        to contact me for account management purposes using the information I provide.
+        Message and data rates may apply.
+      </p>
+
+      <button class="auth-button auth-button--primary" type="button">
+        Next
+      </button>
+
+      <div class="auth-divider">
+        <span></span>
+        <p>Already have an account?</p>
+        <span></span>
+      </div>
+
+      <a class="auth-button auth-button--secondary" routerLink="/login">
+        Sign In
+      </a>
+    </form>
+  </main>
+
+  <footer class="auth-page__footer">
+    <span>Andara © 2026</span>
+    <a routerLink="/">Privacy & Legal</a>
+    <a routerLink="/">Contact</a>
+  </footer>
+</section>
