@@ -21,6 +21,8 @@
 .navbar-menu-button,
 .navbar-dropdown__trigger {
   @apply rounded px-3 py-2 text-sm font-medium text-[#171a20] no-underline transition hover:bg-[#171a20]/5;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .navbar__actions {
@@ -67,6 +69,8 @@
 
 .navbar-dropdown__option {
   @apply flex w-full items-center rounded border-0 bg-transparent px-3 py-3 text-left text-sm font-medium text-[#171a20] no-underline transition hover:bg-[#f4f4f4] focus:bg-[#f4f4f4] focus:outline-none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .navbar-mobile-menu {
@@ -75,6 +79,8 @@
 
 .navbar-mobile-menu a {
   @apply flex items-center rounded-lg px-4 py-3 text-sm font-medium text-[#171a20] no-underline transition hover:bg-[#f4f4f4] focus:bg-[#f4f4f4] focus:outline-none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 @media (min-width: 761px) {
