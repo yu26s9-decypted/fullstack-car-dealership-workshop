@@ -7,16 +7,19 @@
   <main class="auth-page__main">
     <form class="auth-form">
       <div class="auth-form__header">
-        <p class="auth-form__step">Step 1 of 3</p>
+      @if(selectedNext() == false){
+        <p class="auth-form__step">Step 1 of 2</p>
+      } @else {
+        <p class="auth-form__step">Step 2 of 2</p>
+      }
         <h1>Create account</h1>
       </div>
 
       
-
       @if (selectedNext() == true) {
          <label class="auth-field">
         <span>Enter password</span>
-        <input type="password" name="password"/>
+        <input type="password" name="password" [(ngModel)]="password" />
       </label>
       <button class="auth-button auth-button--primary" type="button" (click)="createUserAccount()">
         Create my Andara account!
@@ -59,20 +62,20 @@
       </label>
         <label class="auth-field">
         <span>First Name</span>
-        <input type="text" name="firstName" autocomplete="given-name" />
+        <input type="text" name="firstName" [(ngModel)]="firstName" autocomplete="given-name"/>
       </label>
 
       <label class="auth-field">
         <span>Last Name</span>
-        <input type="text" name="lastName" autocomplete="family-name" />
+        <input type="text" name="lastName" autocomplete="family-name" [(ngModel)]="lastName" />
       </label>
        <label class="auth-field">
         <span>Email</span>
-        <input type="text" name="email" autocomplete="email" />
+        <input type="text" name="email" autocomplete="email" [(ngModel)]="email" />
       </label>
        <label class="auth-field">
         <span>Phone Number</span>
-        <input type="text" name="Phone" placeholder="Enter your phone number"/>
+        <input type="text" name="phone" placeholder="Enter your phone number" [(ngModel)]="phone" />
       </label>
       <button class="auth-button auth-button--primary" type="button" (click)="selectedNextStep()">
         Next
