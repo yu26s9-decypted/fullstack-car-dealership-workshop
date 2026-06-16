@@ -36,7 +36,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/v1/vehicle/**").permitAll()
                         .requestMatchers("/api/v1/dealership/**").permitAll()
                         .requestMatchers("/api/v1/status/**").permitAll()
-                        .anyRequest().authenticated()
+                        .anyRequest().permitAll()
                 )
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
