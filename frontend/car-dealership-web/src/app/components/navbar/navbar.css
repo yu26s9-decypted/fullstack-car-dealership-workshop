@@ -18,6 +18,7 @@
 
 .navbar__links a,
 .navbar-icon-button,
+.navbar-menu-button,
 .navbar-dropdown__trigger {
   @apply rounded px-3 py-2 text-sm font-medium text-[#171a20] no-underline transition hover:bg-[#171a20]/5;
 }
@@ -35,6 +36,7 @@
 }
 
 .navbar-icon-button,
+.navbar-menu-button,
 .navbar-dropdown__trigger {
   @apply flex h-10 cursor-pointer items-center justify-center border-0 bg-transparent text-xl leading-none;
 }
@@ -45,6 +47,10 @@
 
 .navbar-icon-button {
   @apply w-10 px-0;
+}
+
+.navbar-menu-button {
+  @apply hidden w-10 px-0;
 }
 
 .navbar-dropdown__chevron {
@@ -64,18 +70,33 @@
   @apply flex w-full items-center rounded border-0 bg-transparent px-3 py-3 text-left text-sm font-medium text-[#171a20] no-underline transition hover:bg-[#f4f4f4] focus:bg-[#f4f4f4] focus:outline-none;
 }
 
+.navbar-mobile-menu {
+  @apply absolute left-4 right-4 top-[calc(100%+0.5rem)] z-40 hidden overflow-hidden rounded-xl bg-white p-2 shadow-[0_1rem_2.5rem_rgb(7_14_32_/_14%)];
+}
+
+.navbar-mobile-menu a {
+  @apply flex items-center rounded-lg px-4 py-3 text-sm font-medium text-[#171a20] no-underline transition hover:bg-[#f4f4f4] focus:bg-[#f4f4f4] focus:outline-none;
+}
+
 @media (max-width: 760px) {
   .navbar {
     @apply grid-cols-[auto_1fr] px-4;
   }
 
   .navbar__links {
-    @apply justify-end gap-1;
+    @apply hidden;
   }
 
-  .navbar__links a:nth-child(n+3),
   .navbar__actions {
-    @apply hidden;
+    @apply flex;
+  }
+
+  .navbar-menu-button {
+    @apply flex;
+  }
+
+  .navbar-mobile-menu {
+    @apply block;
   }
 }
 

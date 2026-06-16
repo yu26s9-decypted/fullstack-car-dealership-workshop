@@ -2,7 +2,7 @@
   <section class="dealership-heading" aria-labelledby="dealership-title">
     <div>
       <h1 id="dealership-title">Dealerships</h1>
-      <p>Available Andara locations for test drives, delivery support, and service.</p>
+      <p>Buy. Finance. Service. Find an Andara dealer near you.</p>
     </div>
 
     <div class="dealership-count" aria-label="Dealership summary">
@@ -73,10 +73,7 @@
         @for(location of dealership(); track location.id; let index = $index) {
           <article class="dealership-card">
             <div class="dealership-card__media">
-              <img
-                [src]="getDealershipImage(index)"
-                [alt]="location.name"
-              />
+             
             </div>
 
             <div class="dealership-card__body">

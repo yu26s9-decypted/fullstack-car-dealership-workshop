@@ -1,5 +1,5 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Component, OnInit, PLATFORM_ID, inject } from '@angular/core';
+import { Component, OnInit, PLATFORM_ID, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import Intercom, { show } from '@intercom/messenger-js-sdk';
 import { AuthService } from '../../services/auth.service';
@@ -14,6 +14,7 @@ export class Navbar implements OnInit {
   authService = inject(AuthService);
   private platformId = inject(PLATFORM_ID);
   private isIntercomInitialized = false;
+  isMobileMenuOpen = signal(false);
 
   ngOnInit(): void {
     this.initializeIntercom();
@@ -25,6 +26,14 @@ export class Navbar implements OnInit {
     if (isPlatformBrowser(this.platformId)) {
       show();
     }
+  }
+
+  toggleMobileMenu(): void {
+    this.isMobileMenuOpen.update((isOpen) => !isOpen);
+  }
+
+  closeMobileMenu(): void {
+    this.isMobileMenuOpen.set(false);
   }
 
   get firstName(): string {

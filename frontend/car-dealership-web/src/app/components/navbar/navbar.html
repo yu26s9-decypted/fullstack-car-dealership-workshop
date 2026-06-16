@@ -71,5 +71,35 @@
         }
       </div>
     </div>
+    <button
+      class="navbar-menu-button"
+      type="button"
+      aria-label="Navigation menu"
+      aria-haspopup="menu"
+      [attr.aria-expanded]="isMobileMenuOpen()"
+      (click)="toggleMobileMenu()"
+    >
+      <i class="ph-list-light" aria-hidden="true"></i>
+    </button>
   </div>
+
+  @if(isMobileMenuOpen()) {
+    <div class="navbar-mobile-menu" role="menu">
+      <a routerLink="/" fragment="vehicles" role="menuitem" (click)="closeMobileMenu()">
+        Vehicles
+      </a>
+      <a routerLink="/dealership" role="menuitem" (click)="closeMobileMenu()">
+        Dealership
+      </a>
+      <a routerLink="/" role="menuitem" (click)="closeMobileMenu()">
+        Charging
+      </a>
+      <a routerLink="/" role="menuitem" (click)="closeMobileMenu()">
+        Discover
+      </a>
+      <a routerLink="/" role="menuitem" (click)="closeMobileMenu()">
+        Shop
+      </a>
+    </div>
+  }
 </nav>
