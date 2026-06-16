@@ -15,6 +15,7 @@ export class Navbar implements OnInit {
   private platformId = inject(PLATFORM_ID);
   private isIntercomInitialized = false;
   isMobileMenuOpen = signal(false);
+  isAccountMenuOpen = signal(false);
 
   ngOnInit(): void {
     this.initializeIntercom();
@@ -29,11 +30,26 @@ export class Navbar implements OnInit {
   }
 
   toggleMobileMenu(): void {
+    this.closeAccountMenu();
     this.isMobileMenuOpen.update((isOpen) => !isOpen);
   }
 
   closeMobileMenu(): void {
     this.isMobileMenuOpen.set(false);
+  }
+
+  toggleAccountMenu(): void {
+    this.closeMobileMenu();
+    this.isAccountMenuOpen.update((isOpen) => !isOpen);
+  }
+
+  closeAccountMenu(): void {
+    this.isAccountMenuOpen.set(false);
+  }
+
+  signOut(): void {
+    this.authService.logout();
+    this.closeAccountMenu();
   }
 
   get firstName(): string {

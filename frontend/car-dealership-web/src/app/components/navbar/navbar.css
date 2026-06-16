@@ -61,8 +61,7 @@
   @apply invisible absolute right-0 top-[calc(100%+0.4rem)] z-40 min-w-56 translate-y-1 overflow-hidden rounded-md bg-white p-1 opacity-0 shadow-[0_1rem_2.5rem_rgb(7_14_32_/_14%)] transition duration-150;
 }
 
-.navbar-dropdown:hover .navbar-dropdown__menu,
-.navbar-dropdown:focus-within .navbar-dropdown__menu {
+.navbar-dropdown.is-open .navbar-dropdown__menu {
   @apply visible translate-y-0 opacity-100;
 }
 
@@ -76,6 +75,13 @@
 
 .navbar-mobile-menu a {
   @apply flex items-center rounded-lg px-4 py-3 text-sm font-medium text-[#171a20] no-underline transition hover:bg-[#f4f4f4] focus:bg-[#f4f4f4] focus:outline-none;
+}
+
+@media (min-width: 761px) {
+  .navbar-dropdown:hover .navbar-dropdown__menu,
+  .navbar-dropdown:focus-within .navbar-dropdown__menu {
+    @apply visible translate-y-0 opacity-100;
+  }
 }
 
 @media (max-width: 760px) {
