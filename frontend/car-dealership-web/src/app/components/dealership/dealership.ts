@@ -42,8 +42,4 @@ export class DealershipPage implements OnInit{
     return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
   }
 
-  getDealershipImage(index: number): string {
-    return this.dealershipImages[index % this.dealershipImages.length];
-  }
-
 }

@@ -11,7 +11,20 @@
         <h1>Create account</h1>
       </div>
 
-      <label class="auth-field">
+      
+
+      @if (selectedNext() == true) {
+         <label class="auth-field">
+        <span>Enter password</span>
+        <input type="password" name="password"/>
+      </label>
+      <button class="auth-button auth-button--primary" type="button" (click)="createUserAccount()">
+        Create my Andara account!
+      </button>
+
+
+      } @else {
+        <label class="auth-field">
         <span>Region</span>
         <div class="auth-select">
           <button
@@ -32,6 +45,7 @@
                   class="auth-select__option"
                   type="button"
                   role="option"
+                  name="region"
                   [class.is-selected]="selectedCountry() === country"
                   [attr.aria-selected]="selectedCountry() === country"
                   (click)="selectCountry(country)"
@@ -43,8 +57,7 @@
           }
         </div>
       </label>
-
-      <label class="auth-field">
+        <label class="auth-field">
         <span>First Name</span>
         <input type="text" name="firstName" autocomplete="given-name" />
       </label>
@@ -53,18 +66,18 @@
         <span>Last Name</span>
         <input type="text" name="lastName" autocomplete="family-name" />
       </label>
-
-      <p class="auth-form__legal">
-        By clicking 'Next', I understand and agree to Andara's
-        <a routerLink="/">Privacy Notice</a> and
-        <a routerLink="/">Terms of Use</a> for creating an Andara Account. I authorize Andara
-        to contact me for account management purposes using the information I provide.
-        Message and data rates may apply.
-      </p>
-
-      <button class="auth-button auth-button--primary" type="button">
+       <label class="auth-field">
+        <span>Email</span>
+        <input type="text" name="email" autocomplete="email" />
+      </label>
+       <label class="auth-field">
+        <span>Phone Number</span>
+        <input type="text" name="Phone" placeholder="Enter your phone number"/>
+      </label>
+      <button class="auth-button auth-button--primary" type="button" (click)="selectedNextStep()">
         Next
       </button>
+      }
 
       <div class="auth-divider">
         <span></span>
@@ -75,7 +88,15 @@
       <a class="auth-button auth-button--secondary" routerLink="/login">
         Sign In
       </a>
+       <p class="auth-form__legal" click="">
+        By clicking 'Next', I understand and agree to Andara's
+        <a routerLink="/">Privacy Notice</a> and
+        <a routerLink="/">Terms of Use</a> for creating an Andara Account. I authorize Andara
+        to contact me for account management purposes using the information I provide.
+        Message and data rates may apply.
+      </p>
     </form>
+    
   </main>
 
   <footer class="auth-page__footer">
