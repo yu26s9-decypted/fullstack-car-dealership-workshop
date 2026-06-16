@@ -5,11 +5,11 @@
 }
 
 .navbar {
-  @apply relative grid h-14 w-full grid-cols-[1fr_auto_1fr] items-center bg-white px-8 text-[#171a20];
+  @apply relative grid min-h-16 w-full grid-cols-[1fr_auto_1fr] items-center bg-white px-8 text-[#171a20];
 }
 
 .navbar__brand {
-  @apply justify-self-start font-['Syncopate'] text-base font-normal uppercase tracking-[0.42em] text-[#171a20] no-underline;
+  @apply justify-self-start font-['Syncopate'] text-base font-normal uppercase leading-none tracking-[0.42em] text-[#171a20] no-underline;
 }
 
 .navbar__links {
@@ -40,7 +40,7 @@
 .navbar-icon-button,
 .navbar-menu-button,
 .navbar-dropdown__trigger {
-  @apply flex h-10 cursor-pointer items-center justify-center border-0 bg-transparent text-xl leading-none;
+  @apply box-border flex h-10 cursor-pointer appearance-none items-center justify-center border-0 bg-transparent text-xl leading-none;
 }
 
 .navbar-dropdown__trigger {
