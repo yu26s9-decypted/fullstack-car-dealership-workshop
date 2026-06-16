@@ -13,11 +13,13 @@
 
       <label class="auth-field">
         <span>Email</span>
-        <input type="email" name="email" autocomplete="email" />
+        <input type="email" name="email" autocomplete="email" [(ngModel)]="email"/>
+        <span>Password</span>
+        <input type="password" name="email" autocomplete="current-password" [(ngModel)]="password" />
       </label>
 
-      <button class="auth-button auth-button--primary" type="button">
-        Continue
+      <button class="auth-button auth-button--primary" type="button" (click)="login()">
+        Login
       </button>
 
       <a class="auth-form__helper" routerLink="/">

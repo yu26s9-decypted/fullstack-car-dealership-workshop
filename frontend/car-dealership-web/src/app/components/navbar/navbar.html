@@ -22,7 +22,49 @@
   </div>
 
   <div class="navbar__actions" aria-label="Secondary navigation">
-    <a routerLink="/">Support</a>
-    <a routerLink="/login">Account</a>
+    <a class="navbar-icon-button" routerLink="/" aria-label="Support">
+      <i class="ph-headset-light" aria-hidden="true"></i>
+    </a>
+    <div class="navbar-dropdown">
+      <button
+        class="navbar-dropdown__trigger"
+        type="button"
+        aria-label="Account menu"
+        aria-haspopup="menu"
+      >
+        <i class="ph-user-circle-light" aria-hidden="true"></i>
+        <i class="navbar-dropdown__chevron ph-caret-down-light" aria-hidden="true"></i>
+      </button>
+
+      <div class="navbar-dropdown__menu" role="menu">
+        <a class="navbar-dropdown__option" routerLink="/login" role="menuitem">
+          Check order status
+        </a>
+        <a class="navbar-dropdown__option" routerLink="/login" role="menuitem">
+          Manage account
+        </a>
+
+         @if(authService.isAdmin()){
+          <a class="navbar-dropdown__option" routerLink="/admin" role="menuitem">
+          Admin Dashboard</a>
+        }
+
+
+        @if(authService.isLoggedIn()){
+          <button
+            class="navbar-dropdown__option"
+            type="button"
+            role="menuitem"
+            (click)="authService.logout()"
+          >
+            Sign out
+          </button>
+        } @else {
+          <a class="navbar-dropdown__option" routerLink="/login" role="menuitem">
+            Login
+          </a>
+        }
+      </div>
+    </div>
   </div>
 </nav>

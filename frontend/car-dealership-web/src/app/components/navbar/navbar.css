@@ -17,12 +17,51 @@
 }
 
 .navbar__links a,
-.navbar__actions a {
+.navbar-icon-button,
+.navbar-dropdown__trigger {
   @apply rounded px-3 py-2 text-sm font-medium text-[#171a20] no-underline transition hover:bg-[#171a20]/5;
 }
 
 .navbar__actions {
   @apply flex items-center justify-end gap-1;
+}
+
+.navbar-dropdown {
+  @apply relative;
+}
+
+.navbar-dropdown::after {
+  @apply absolute right-0 top-full h-3 w-full content-[''];
+}
+
+.navbar-icon-button,
+.navbar-dropdown__trigger {
+  @apply flex h-10 items-center justify-center border-0 bg-transparent text-xl leading-none;
+}
+
+.navbar-dropdown__trigger {
+  @apply w-12 gap-0.5 px-0;
+}
+
+.navbar-icon-button {
+  @apply w-10 px-0;
+}
+
+.navbar-dropdown__chevron {
+  @apply text-xs leading-none text-[#5c5e62];
+}
+
+.navbar-dropdown__menu {
+  @apply invisible absolute right-0 top-[calc(100%+0.4rem)] z-40 min-w-56 translate-y-1 overflow-hidden rounded-md bg-white p-1 opacity-0 shadow-[0_1rem_2.5rem_rgb(7_14_32_/_14%)] transition duration-150;
+}
+
+.navbar-dropdown:hover .navbar-dropdown__menu,
+.navbar-dropdown:focus-within .navbar-dropdown__menu {
+  @apply visible translate-y-0 opacity-100;
+}
+
+.navbar-dropdown__option {
+  @apply flex w-full items-center rounded border-0 bg-transparent px-3 py-3 text-left text-sm font-medium text-[#171a20] no-underline transition hover:bg-[#f4f4f4] focus:bg-[#f4f4f4] focus:outline-none;
 }
 
 @media (max-width: 760px) {
