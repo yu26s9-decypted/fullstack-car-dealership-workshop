@@ -22,6 +22,7 @@
     "@angular/platform-server": "^21.2.0",
     "@angular/router": "^21.2.0",
     "@angular/ssr": "^21.2.15",
+    "@intercom/messenger-js-sdk": "^0.0.19",
     "express": "^5.1.0",
     "phosphor-icons": "^1.4.2",
     "rxjs": "~7.8.0",

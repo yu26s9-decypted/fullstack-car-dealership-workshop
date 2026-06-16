@@ -1,4 +1,4 @@
-export interface Dealership{
+export interface Dealership {
     id: number;
     name: string;
     address: string;

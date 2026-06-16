@@ -13,7 +13,7 @@ export const serverRoutes: ServerRoute[] = [
     path: 'admin/login',
     renderMode: RenderMode.Client
   },
-   {
+  {
     path: '**',
     renderMode: RenderMode.Client
   },

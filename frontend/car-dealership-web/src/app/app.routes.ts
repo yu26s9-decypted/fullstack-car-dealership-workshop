@@ -6,6 +6,7 @@ import { authGuard } from './guards/auth-guard';
 import { AdminLogin } from './components/admin-login/admin-login';
 import { SignIn } from './components/sign-in/sign-in';
 import { CreateAccount } from './components/create-account/create-account';
+import { DealershipPage } from './components/dealership/dealership';
 
 export const routes: Routes = [
     {
@@ -18,7 +19,7 @@ export const routes: Routes = [
         path: 'admin', component: AdminPanel, canActivate: [authGuard]
     }, {
         path: 'admin/login', component: AdminLogin
-    }, {
-        path: 'create-account', component: CreateAccount
-    }, {path: 'login', component: SignIn}
+    }, {path: 'create-account', component: CreateAccount},
+    {path: 'login', component: SignIn},
+    {path: 'dealership', component: DealershipPage}
 ];

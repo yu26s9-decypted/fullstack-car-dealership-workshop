@@ -7,8 +7,8 @@
     <a routerLink="/" fragment="vehicles">
       Vehicles
     </a>
-    <a routerLink="/">
-      Energy
+    <a routerLink="/dealership">
+      Dealership
     </a>
     <a routerLink="/">
       Charging
@@ -22,9 +22,14 @@
   </div>
 
   <div class="navbar__actions" aria-label="Secondary navigation">
-    <a class="navbar-icon-button" routerLink="/" aria-label="Support">
+    <button
+      class="navbar-icon-button"
+      type="button"
+      aria-label="Support"
+      (click)="openSupport()"
+    >
       <i class="ph-headset-light" aria-hidden="true"></i>
-    </a>
+    </button>
     <div class="navbar-dropdown">
       <button
         class="navbar-dropdown__trigger"

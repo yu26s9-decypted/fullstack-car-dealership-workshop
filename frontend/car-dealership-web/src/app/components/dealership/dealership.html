@@ -1,0 +1,117 @@
+<main class="dealership-page">
+  <section class="dealership-heading" aria-labelledby="dealership-title">
+    <div>
+      <h1 id="dealership-title">Dealerships</h1>
+      <p>Available Andara locations for test drives, delivery support, and service.</p>
+    </div>
+
+    <div class="dealership-count" aria-label="Dealership summary">
+      <span>{{ dealership().length }}</span>
+      <p>Locations</p>
+    </div>
+  </section>
+
+  <div class="dealership-inventory">
+    <aside class="dealership-filters" aria-label="Dealership filters">
+      <div class="dealership-filter-group">
+        <div class="dealership-filter-group__header">
+          <h2>Region</h2>
+          <i class="ph-caret-up-light" aria-hidden="true"></i>
+        </div>
+        <label>
+          <span></span>
+          Northeast
+        </label>
+        <label>
+          <span></span>
+          West Coast
+        </label>
+        <label>
+          <span></span>
+          Central
+        </label>
+      </div>
+
+      <div class="dealership-filter-group">
+        <div class="dealership-filter-group__header">
+          <h2>Services</h2>
+          <i class="ph-caret-up-light" aria-hidden="true"></i>
+        </div>
+        <label>
+          <span></span>
+          Test drives
+        </label>
+        <label>
+          <span></span>
+          Delivery
+        </label>
+        <label>
+          <span></span>
+          Service
+        </label>
+      </div>
+    </aside>
+
+    @if(isLoading()) {
+      <section class="dealership-grid" aria-label="Loading dealerships">
+        @for (item of [1, 2, 3, 4, 5, 6]; track item) {
+          <article class="dealership-card dealership-card--loading">
+            <span></span>
+            <span></span>
+            <span></span>
+          </article>
+        }
+      </section>
+    } @else if (dealership().length === 0) {
+      <section class="dealership-empty" aria-label="No dealerships found">
+        <i class="ph-map-pin-line-light" aria-hidden="true"></i>
+        <h2>No dealerships available</h2>
+        <p>Check back soon for Andara locations near you.</p>
+      </section>
+    } @else {
+      <section class="dealership-grid" aria-label="Andara dealership locations">
+        @for(location of dealership(); track location.id; let index = $index) {
+          <article class="dealership-card">
+            <div class="dealership-card__media">
+              <img
+                [src]="getDealershipImage(index)"
+                [alt]="location.name"
+              />
+            </div>
+
+            <div class="dealership-card__body">
+              <h2>{{ location.name }}</h2>
+
+              <address>
+                <i class="ph-map-pin-line-light" aria-hidden="true"></i>
+                <span>{{ location.address }}</span>
+              </address>
+
+              <a class="dealership-card__phone" [href]="getPhoneHref(location.phone)">
+                <i class="ph-phone-call-light" aria-hidden="true"></i>
+                <span>{{ location.phone }}</span>
+              </a>
+
+              <div class="dealership-card__actions">
+                <a
+                  class="dealership-card__button dealership-card__button--primary"
+                  [href]="getDirectionsUrl(location.address)"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Directions
+                </a>
+                <a
+                  class="dealership-card__button"
+                  [href]="getPhoneHref(location.phone)"
+                >
+                  Call
+                </a>
+              </div>
+            </div>
+          </article>
+        }
+      </section>
+    }
+  </div>
+</main>
