@@ -1,4 +1,4 @@
-package com.pluralsight.dealership.Service;
+package com.pluralsight.dealership.auth;
 
 
 import com.pluralsight.dealership.User.Role;
