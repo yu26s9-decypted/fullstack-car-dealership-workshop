@@ -1,0 +1,241 @@
+@reference "../../../../styles.css";
+
+:host {
+  @apply fixed inset-0 z-50 grid place-items-center bg-[#171a20]/50 p-5 backdrop-blur-sm;
+}
+
+.order-modal {
+  @apply max-h-[90vh] w-full max-w-[42rem] overflow-hidden rounded-md bg-white text-[#171a20] shadow-[0_1.5rem_4rem_rgb(23_26_32_/_28%)];
+}
+
+.order-sheet {
+  @apply grid max-h-[90vh] grid-rows-[auto_minmax(0,1fr)_auto];
+}
+
+.order-header {
+  @apply flex items-start justify-between gap-6 border-b border-[#e6e8ec] px-8 py-7;
+}
+
+.order-header h1 {
+  @apply m-0 text-3xl font-normal tracking-normal text-[#171a20];
+}
+
+.order-header p {
+  @apply m-0 mt-2 text-sm font-normal text-[#5c5e62];
+}
+
+.order-close {
+  @apply grid h-10 w-10 shrink-0 place-items-center rounded-md border-0 bg-transparent text-2xl font-light leading-none text-[#5c5e62] transition hover:bg-[#f4f4f4] hover:text-[#171a20] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3f63e6];
+}
+
+.order-body {
+  @apply min-h-0 overflow-y-auto px-8 py-6;
+  scrollbar-width: none;
+}
+
+.order-body::-webkit-scrollbar {
+  display: none;
+}
+
+.order-card {
+  @apply grid gap-4 border-b border-[#e6e8ec] py-5 first:pt-0 last:border-b-0 last:pb-0;
+}
+
+.order-card h2 {
+  @apply m-0 text-xl font-normal tracking-normal text-[#171a20];
+}
+
+.detail-row {
+  @apply flex min-h-8 items-center justify-between gap-6 text-sm;
+}
+
+.detail-row span {
+  @apply font-normal text-[#5c5e62];
+}
+
+.detail-row strong {
+  @apply text-right font-normal text-[#171a20];
+}
+
+.delivery-toggle {
+  @apply grid grid-cols-2 overflow-hidden rounded-md bg-[#f4f4f4] p-1;
+}
+
+.delivery-toggle button {
+  @apply min-h-11 rounded px-4 text-sm font-normal text-[#5c5e62] transition hover:text-[#171a20] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3f63e6];
+}
+
+.delivery-toggle button.is-selected {
+  @apply bg-white text-[#171a20] shadow-[0_0.35rem_1rem_rgb(23_26_32_/_10%)];
+}
+
+.pickup-detail {
+  @apply rounded-md bg-[#f8f8f8] px-4 py-4 text-sm font-normal text-[#5c5e62];
+}
+
+.pickup-detail span {
+  @apply block text-[#171a20];
+}
+
+.pickup-detail p {
+  @apply m-0 mt-1 leading-6;
+}
+
+.pickup-detail a {
+  @apply mt-2 inline-block text-[#171a20] no-underline hover:underline;
+}
+
+.order-field {
+  @apply grid gap-2;
+}
+
+.order-field span {
+  @apply text-sm font-normal text-[#5c5e62];
+}
+
+.order-field input,
+.term-select__trigger {
+  @apply min-h-11 w-full rounded-md border border-transparent bg-[#f4f4f4] px-4 text-sm font-normal text-[#171a20] outline-none transition hover:bg-[#eeeeee] focus:border-[#3f63e6] focus:bg-white focus:ring-4 focus:ring-[#3f63e6]/10;
+}
+
+.order-field input[type='number'] {
+  appearance: textfield;
+}
+
+.order-field input[type='number']::-webkit-inner-spin-button,
+.order-field input[type='number']::-webkit-outer-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+.order-field textarea {
+  @apply min-h-24 w-full resize-y rounded-md border border-transparent bg-[#f4f4f4] px-4 py-3 text-sm font-normal leading-6 text-[#171a20] outline-none transition placeholder:text-[#8d95a4] hover:bg-[#eeeeee] focus:border-[#3f63e6] focus:bg-white focus:ring-4 focus:ring-[#3f63e6]/10;
+}
+
+.payment-grid {
+  @apply grid gap-3 sm:grid-cols-2;
+}
+
+.term-select {
+  @apply relative;
+}
+
+.term-select__trigger {
+  @apply flex items-center justify-between text-left;
+}
+
+.term-select__chevron {
+  @apply text-base leading-none text-[#5c5e62];
+}
+
+.term-select__menu {
+  @apply absolute left-0 right-0 top-[calc(100%+0.35rem)] z-40 overflow-hidden rounded-md border border-[#e6e8ec] bg-white p-1 shadow-[0_1rem_2rem_rgb(23_26_32_/_14%)];
+}
+
+.term-select__option {
+  @apply flex w-full items-center rounded px-3 py-3 text-left text-sm font-normal text-[#171a20] transition hover:bg-[#f4f4f4] focus:bg-[#f4f4f4] focus:outline-none;
+}
+
+.term-select__option.is-selected {
+  @apply bg-[#f4f4f4] text-[#171a20];
+}
+
+.estimate-box {
+  @apply flex min-h-12 items-center justify-between gap-6 rounded-md bg-[#f8f8f8] px-4 py-3 text-sm;
+}
+
+.estimate-box span {
+  @apply font-normal text-[#5c5e62];
+}
+
+.estimate-box strong {
+  @apply text-right font-normal text-[#171a20];
+}
+
+.estimate-value {
+  @apply grid justify-items-end gap-2;
+}
+
+.estimate-loading,
+.footer-loading {
+  @apply relative overflow-hidden rounded-full bg-[#e6e8ec];
+}
+
+.estimate-loading {
+  @apply h-1.5 w-28;
+}
+
+.footer-loading {
+  @apply mt-3 h-1.5 w-32;
+}
+
+.estimate-loading span,
+.footer-loading span {
+  @apply absolute inset-y-0 left-0 w-1/2 rounded-full bg-[#8d95a4];
+  animation: payment-loading 900ms ease-in-out infinite;
+}
+
+.order-footer {
+  @apply grid grid-cols-[1fr_auto] items-center gap-5 border-t border-[#e6e8ec] bg-white px-8 py-5;
+}
+
+.order-footer span {
+  @apply block text-xs font-normal text-[#5c5e62];
+}
+
+.order-footer strong {
+  @apply mt-1 block text-xl font-normal text-[#171a20];
+}
+
+.order-submit {
+  @apply inline-flex min-h-11 min-w-40 items-center justify-center rounded-md bg-[#3f63e6] px-6 text-sm font-normal text-white transition hover:bg-[#2747b8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3f63e6];
+}
+
+@keyframes payment-loading {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(220%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .estimate-loading span,
+  .footer-loading span {
+    animation: none;
+    transform: none;
+  }
+}
+
+@media (max-width: 640px) {
+  :host {
+    @apply items-end p-0;
+  }
+
+  .order-modal,
+  .order-sheet {
+    @apply max-h-[96vh] rounded-b-none;
+  }
+
+  .order-header {
+    @apply px-5 py-5;
+  }
+
+  .order-header h1 {
+    @apply text-2xl;
+  }
+
+  .order-body {
+    @apply px-5;
+  }
+
+  .order-footer {
+    @apply grid-cols-1 px-5;
+  }
+
+  .order-submit {
+    @apply w-full;
+  }
+}

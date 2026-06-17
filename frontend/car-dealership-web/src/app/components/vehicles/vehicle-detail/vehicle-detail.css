@@ -1,0 +1,274 @@
+@reference "../../../../styles.css";
+
+:host {
+  @apply block bg-white;
+}
+
+.spinner,
+.not-found {
+  @apply grid min-h-screen place-content-center place-items-center gap-4 bg-[#f8faff] px-6 text-center;
+}
+
+.spinner__ring {
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-top-color: #0d1117;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.configurator {
+  @apply grid min-h-screen bg-white lg:grid-cols-[minmax(0,1fr)_28rem];
+}
+
+.configurator__visual {
+  @apply relative flex min-h-[32rem] items-center justify-center overflow-hidden bg-white px-6 pb-10 pt-24 sm:px-10 lg:min-h-screen lg:py-20;
+}
+
+.configurator__visual::before {
+  @apply hidden;
+}
+
+.configurator__image {
+  @apply relative z-10 max-h-[70vh] w-full max-w-6xl object-contain drop-shadow-[0_2.5rem_3rem_rgb(7_14_32_/_14%)];
+  animation: vehicle-reveal 700ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  mix-blend-mode: multiply;
+}
+
+.configurator__placeholder {
+  @apply relative z-10 grid aspect-[16/9] w-full max-w-4xl place-items-center rounded-lg bg-[radial-gradient(circle_at_65%_30%,rgb(63_99_230_/_18%),transparent_34%),linear-gradient(135deg,#f8faff_0%,#dfe6f3_52%,#bcc8da_100%)] text-center shadow-[0_3rem_3.5rem_rgb(7_14_32_/_12%)];
+}
+
+.configurator__placeholder span {
+  @apply block font-['Syncopate'] text-7xl font-normal uppercase tracking-[0.12em] text-[#182033]/70;
+}
+
+.configurator__placeholder small {
+  @apply mt-4 block text-sm font-semibold uppercase tracking-[0.2em] text-[#3f63e6]/80;
+}
+
+.configurator__panel {
+  @apply flex min-h-screen flex-col border-l border-[#edf0f5] bg-white px-7 pb-36 pt-24 sm:px-9 lg:sticky lg:top-0;
+}
+
+.configurator__header {
+  @apply text-center;
+}
+
+.configurator__mobile-header {
+  @apply hidden;
+}
+
+.configurator__eyebrow {
+  @apply m-0 text-xs font-semibold uppercase tracking-[0.18em] text-[#3f63e6];
+}
+
+.configurator__title {
+  @apply mt-3 font-['Syncopate'] text-4xl font-normal uppercase tracking-[0.08em] text-[#182033] sm:text-5xl;
+}
+
+.configurator__description {
+  @apply mx-auto mt-4 max-w-sm text-sm font-medium leading-6 text-[#5c5e62];
+}
+
+.configurator__stats {
+  @apply mt-8 grid grid-cols-3 gap-4 text-center;
+}
+
+.configurator__stats div {
+  @apply grid gap-1;
+}
+
+.configurator__stats dt {
+  @apply text-lg font-semibold text-[#182033];
+}
+
+.configurator__stats dd {
+  @apply m-0 text-xs text-[#5c5e62];
+}
+
+.configurator__tabs {
+  @apply mt-8 grid grid-cols-3 border-b border-[#d6dae2];
+}
+
+.configurator__tabs button {
+  @apply border-b-2 border-transparent px-3 py-3 text-sm font-semibold text-[#5c5e62];
+}
+
+.configurator__tabs .is-active {
+  @apply border-[#182033] text-[#182033];
+}
+
+.configurator__options {
+  @apply mt-4 grid gap-3;
+}
+
+.configurator-option {
+  @apply flex min-h-16 items-center justify-between rounded border border-[#d6dae2] bg-white px-4 text-left text-sm text-[#5c5e62] transition hover:border-[#8d95a4] hover:bg-[#f8faff];
+}
+
+.configurator-option span {
+  @apply font-semibold text-[#182033];
+}
+
+.configurator-option strong {
+  @apply font-semibold text-[#182033];
+}
+
+.configurator-option.is-selected {
+  @apply border-[#182033] bg-[#f8faff];
+}
+
+.configurator__compare {
+  @apply mt-4 flex min-h-12 items-center justify-center rounded bg-[#f4f4f4] px-4 text-sm font-semibold text-[#182033] transition hover:bg-[#eef2f7];
+}
+
+.configurator__placeholder-form {
+  @apply mt-5 rounded border border-dashed border-[#d6dae2] bg-[#f8faff] p-4 text-sm leading-6;
+}
+
+.configurator__summary {
+  @apply fixed inset-x-0 bottom-0 z-40 grid grid-cols-[1fr_auto] items-center gap-6 border-t border-[#edf0f5] bg-white px-6 py-5 shadow-[0_-1rem_2rem_rgb(7_14_32_/_7%)] sm:px-8 lg:px-12;
+}
+
+.configurator__summary-price {
+  @apply m-0 text-2xl font-semibold text-[#182033];
+}
+
+.configurator__summary .text-low-contrast {
+  @apply mt-1 max-w-[18rem] text-sm font-medium leading-6;
+}
+
+.configurator__summary .btn-luxury {
+  @apply min-w-[12rem];
+}
+
+.configurator--entry .configurator__visual {
+  @apply bg-white;
+}
+
+.configurator--entry .configurator__image {
+  @apply drop-shadow-[0_3rem_3.5rem_rgb(63_99_230_/_14%)];
+}
+
+@media (max-width: 1023px) {
+  .configurator__mobile-header {
+    @apply block px-6 pt-24 text-center sm:px-8;
+  }
+
+  .configurator__panel .configurator__header {
+    @apply hidden;
+  }
+
+  .configurator__visual {
+    @apply pt-4;
+  }
+
+  .configurator__panel {
+    @apply h-auto min-h-0 overflow-visible border-l-0 pb-40 pt-10 shadow-none;
+  }
+}
+
+@media (max-width: 640px) {
+  .configurator {
+    @apply min-h-0;
+  }
+
+  .configurator__visual {
+    @apply min-h-[20rem] py-2;
+  }
+
+  .configurator__summary {
+    @apply grid-cols-1 px-6;
+  }
+
+  .configurator__summary .text-low-contrast {
+    @apply max-w-none;
+  }
+
+  .configurator__summary .btn-luxury {
+    @apply w-full;
+  }
+
+  .finance-row {
+    @apply grid-cols-1;
+  }
+}
+
+@keyframes vehicle-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .configurator__image {
+    animation: none;
+  }
+}
+
+.configurator__finance-form {
+  @apply mt-4 grid gap-4;
+}
+
+.finance-row {
+  @apply grid grid-cols-2 gap-4;
+}
+
+.finance-group {
+  @apply grid gap-2;
+}
+
+.finance-group label {
+  @apply text-xs font-semibold uppercase tracking-[0.12em] text-[#5c5e62];
+}
+
+.finance-group input,
+.finance-select__trigger {
+  @apply min-h-12 w-full rounded border border-[#d6dae2] bg-white px-4 text-sm font-medium text-[#182033] outline-none transition hover:border-[#8d95a4] focus:border-[#182033] focus:bg-[#f8faff];
+}
+
+.finance-group input[type='number'] {
+  appearance: textfield;
+}
+
+.finance-group input[type='number']::-webkit-inner-spin-button,
+.finance-group input[type='number']::-webkit-outer-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+.finance-select {
+  @apply relative;
+}
+
+.finance-select__trigger {
+  @apply flex items-center justify-between text-left;
+}
+
+.finance-select__chevron {
+  @apply text-base leading-none text-[#5c5e62];
+}
+
+.finance-select__menu {
+  @apply absolute left-0 right-0 top-[calc(100%+0.35rem)] z-40 overflow-hidden rounded border border-[#d6dae2] bg-white py-1 shadow-[0_1rem_2rem_rgb(7_14_32_/_14%)];
+}
+
+.finance-select__option {
+  @apply flex w-full items-center px-4 py-3 text-left text-sm font-medium text-[#182033] transition hover:bg-[#f8faff] focus:bg-[#f8faff] focus:outline-none;
+}
+
+.finance-select__option.is-selected {
+  @apply bg-[#f8faff] text-[#3f63e6];
+}

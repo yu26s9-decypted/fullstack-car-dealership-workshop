@@ -1,0 +1,202 @@
+<section class="order-modal" role="dialog" aria-modal="true" aria-labelledby="order-modal-title">
+  <form class="order-sheet" (ngSubmit)="onOrder()">
+    <header class="order-header">
+      <div>
+        <h1 id="order-modal-title">Review order</h1>
+        <p>{{ vehicle().year }} {{ vehicle().make }} {{ vehicle().model }}</p>
+      </div>
+
+      <button class="order-close" type="button" aria-label="Close order modal" (click)="onClose()">
+        &times;
+      </button>
+    </header>
+
+    <main class="order-body">
+      <section class="order-card">
+        <div class="detail-row">
+          <span>Vehicle</span>
+          <strong>{{ vehicle().make }} {{ vehicle().model }}</strong>
+        </div>
+        <div class="detail-row">
+          <span>Color</span>
+          <strong>{{ vehicle().color }}</strong>
+        </div>
+        <div class="detail-row">
+          <span>Mileage</span>
+          <strong>{{ vehicle().odometer | number }} mi</strong>
+        </div>
+        <div class="detail-row">
+          <span>Price</span>
+          <strong>{{ vehicle().price | currency: 'USD':'symbol':'1.0-0' }}</strong>
+        </div>
+      </section>
+
+      <section class="order-card">
+        <h2>Account</h2>
+        <div class="detail-row">
+          <span>Full name</span>
+          <strong>{{ customerName || 'Signed in customer' }}</strong>
+        </div>
+        <div class="detail-row">
+          <span>Phone</span>
+          <strong>{{ customerPhone || 'Not provided' }}</strong>
+        </div>
+        <div class="detail-row">
+          <span>Region</span>
+          <strong>{{ customerRegion || 'Not provided' }}</strong>
+        </div>
+      </section>
+
+      <section class="order-card">
+        <h2>Payment</h2>
+
+        <div class="delivery-toggle" aria-label="Payment type">
+          <button
+            type="button"
+            [class.is-selected]="selectedPaymentType() === 'finance'"
+            (click)="selectPaymentType('finance')"
+          >
+            Finance
+          </button>
+          <button
+            type="button"
+            [class.is-selected]="selectedPaymentType() === 'cash'"
+            (click)="selectPaymentType('cash')"
+          >
+            Cash
+          </button>
+        </div>
+
+        @if (selectedPaymentType() === 'finance') {
+          <div class="payment-grid">
+            <label class="order-field">
+              <span>Down payment</span>
+              <input
+                type="number"
+                name="downPayment"
+                [value]="downPayment()"
+                (input)="updateDownPayment($any($event.target).value)"
+                min="0"
+              />
+            </label>
+
+            <label class="order-field">
+              <span>Term</span>
+              <div class="term-select">
+                <button
+                  class="term-select__trigger"
+                  type="button"
+                  aria-haspopup="listbox"
+                  [attr.aria-expanded]="isTermMenuOpen()"
+                  (click)="toggleTermMenu()"
+                >
+                  <span>{{ termMonth() }} months</span>
+                  <span class="term-select__chevron" aria-hidden="true">⌄</span>
+                </button>
+
+                @if (isTermMenuOpen()) {
+                  <div class="term-select__menu" role="listbox">
+                    @for (term of termOptions; track term) {
+                      <button
+                        class="term-select__option"
+                        type="button"
+                        role="option"
+                        [class.is-selected]="termMonth() === term"
+                        [attr.aria-selected]="termMonth() === term"
+                        (click)="selectTermMonth(term)"
+                      >
+                        {{ term }} months
+                      </button>
+                    }
+                  </div>
+                }
+              </div>
+            </label>
+          </div>
+
+          <div class="estimate-box">
+            <span>Estimated payment</span>
+            <div class="estimate-value">
+              <strong>{{ visiblePaymentSummaryText() }}</strong>
+              @if (isCalculating()) {
+                <div class="estimate-loading" aria-label="Calculating estimated payment">
+                  <span></span>
+                </div>
+              }
+            </div>
+          </div>
+        } @else {
+          <div class="detail-row">
+            <span>Total price</span>
+            <strong>{{ visiblePaymentSummaryText() }}</strong>
+          </div>
+        }
+      </section>
+
+      <section class="order-card">
+        <h2>Delivery</h2>
+
+        <div class="delivery-toggle" aria-label="Delivery option">
+          <button
+            type="button"
+            [class.is-selected]="form.deliveryOption === 'pickup'"
+            (click)="form.deliveryOption = 'pickup'"
+          >
+            Pickup
+          </button>
+          <button
+            type="button"
+            [class.is-selected]="form.deliveryOption === 'delivery'"
+            (click)="form.deliveryOption = 'delivery'"
+          >
+            Delivery
+          </button>
+        </div>
+
+        @if (form.deliveryOption === 'delivery') {
+          <label class="order-field">
+            <span>Delivery address</span>
+            <textarea
+              name="deliveryAddress"
+              rows="3"
+              [(ngModel)]="form.deliveryAddress"
+              placeholder="Street, city, state, ZIP"
+            ></textarea>
+          </label>
+        } @else {
+          <div class="pickup-detail">
+            <span>{{ vehicle().dealership.name }}</span>
+            <p>{{ vehicle().dealership.address }}</p>
+            <a [href]="'tel:' + vehicle().dealership.phone">{{ vehicle().dealership.phone }}</a>
+          </div>
+        }
+      </section>
+
+      <section class="order-card">
+        <label class="order-field">
+          <span>Notes</span>
+          <textarea
+            name="notes"
+            rows="3"
+            [(ngModel)]="form.notes"
+            placeholder="Optional"
+          ></textarea>
+        </label>
+      </section>
+    </main>
+
+    <footer class="order-footer">
+      <div class="order-total">
+        <span>{{ paymentSummaryLabel() }}</span>
+        <strong>{{ visiblePaymentSummaryText() }}</strong>
+        @if (isCalculating() && selectedPaymentType() === 'finance') {
+          <div class="footer-loading" aria-label="Updating payment summary">
+            <span></span>
+          </div>
+        }
+      </div>
+
+      <button class="order-submit" type="submit">Place order</button>
+    </footer>
+  </form>
+</section>
